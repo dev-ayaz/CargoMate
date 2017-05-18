@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoMate.Web", "CargoMate.Web\CargoMate.Web.csproj", "{12221CEF-C3F4-47EA-8931-3B5ED8D93CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoMate.DataAccess", "CargoMate.DataAccess\CargoMate.DataAccess.csproj", "{D13B15A8-CDFD-4F36-8112-8FB365111659}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12221CEF-C3F4-47EA-8931-3B5ED8D93CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12221CEF-C3F4-47EA-8931-3B5ED8D93CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12221CEF-C3F4-47EA-8931-3B5ED8D93CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12221CEF-C3F4-47EA-8931-3B5ED8D93CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13B15A8-CDFD-4F36-8112-8FB365111659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13B15A8-CDFD-4F36-8112-8FB365111659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13B15A8-CDFD-4F36-8112-8FB365111659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13B15A8-CDFD-4F36-8112-8FB365111659}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
