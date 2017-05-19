@@ -6,18 +6,18 @@ namespace CargoMate.DataAccess.DBContext
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Configuration.VehicleCapicities")]
-    public partial class VehicleCapicity
+    [Table("Configuration.VehicleCapacities")]
+    public partial class VehicleCapacity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VehicleCapicity()
+        public VehicleCapacity()
         {
-            LocalizedCapicities = new HashSet<LocalizedCapicity>();
+            LocalizedCapacities = new HashSet<LocalizedCapacity>();
         }
 
         public long Id { get; set; }
 
-        public int? Capicity { get; set; }
+        public int? Capacity { get; set; }
 
         public int? Length { get; set; }
 
@@ -29,7 +29,7 @@ namespace CargoMate.DataAccess.DBContext
         public long? VehicleTypeId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocalizedCapicity> LocalizedCapicities { get; set; }
+        public virtual ICollection<LocalizedCapacity> LocalizedCapacities { get; set; }
 
         public virtual VehicleType VehicleType { get; set; }
     }

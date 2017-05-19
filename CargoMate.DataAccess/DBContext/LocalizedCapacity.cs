@@ -7,7 +7,7 @@ namespace CargoMate.DataAccess.DBContext
     using System.Data.Entity.Spatial;
 
     [Table("Localization.LocalizedCapicities")]
-    public partial class LocalizedCapicity
+    public partial class LocalizedCapacity
     {
         public int Id { get; set; }
 
@@ -17,8 +17,8 @@ namespace CargoMate.DataAccess.DBContext
         [StringLength(10)]
         public string CultureCode { get; set; }
 
-        public long? CapicityId { get; set; }
+        public long? CapacityId { get; set; }
 
-        public virtual VehicleCapicity VehicleCapicity { get; set; }
+        public virtual VehicleCapacity VehicleCapacity { get; set; }
     }
 }

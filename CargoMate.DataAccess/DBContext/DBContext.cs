@@ -15,12 +15,12 @@ namespace CargoMate.DataAccess.DBContext
         public virtual DbSet<Make> Makes { get; set; }
         public virtual DbSet<Model> Models { get; set; }
         public virtual DbSet<ModelYearCombination> ModelYearCombinations { get; set; }
-        public virtual DbSet<VehicleCapicity> VehicleCapicities { get; set; }
+        public virtual DbSet<VehicleCapacity> VehicleCapicities { get; set; }
         public virtual DbSet<VehicleTypeConfiguration> VehicleTypeConfigurations { get; set; }
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<Year> Years { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<LocalizedCapicity> LocalizedCapicities { get; set; }
+        public virtual DbSet<LocalizedCapacity> LocalizedCapicities { get; set; }
         public virtual DbSet<LocalizedCountry> LocalizedCountries { get; set; }
         public virtual DbSet<LocalizedMake> LocalizedMakes { get; set; }
         public virtual DbSet<LocalizedModel> LocalizedModels { get; set; }
@@ -62,11 +62,11 @@ namespace CargoMate.DataAccess.DBContext
                 .WithOptional(e => e.PayLoadType)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<VehicleCapicity>()
+            modelBuilder.Entity<VehicleCapacity>()
                 .Property(e => e.CultureCode)
                 .IsFixedLength();
 
-            modelBuilder.Entity<VehicleCapicity>()
+            modelBuilder.Entity<VehicleCapacity>()
                 .HasMany(e => e.LocalizedCapicities)
                 .WithOptional(e => e.VehicleCapicity)
                 .HasForeignKey(e => e.CapicityId)
