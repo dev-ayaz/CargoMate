@@ -29,6 +29,11 @@ namespace CargoMate.DataAccess.DBContext
         public virtual DbSet<PayLoadType> PayLoadTypes { get; set; }
         public virtual DbSet<LocalizedPayLoadType> LocalizedPayLoadTypes { get; set; }
 
+        public virtual DbSet<Length> Lengths { get; set; }
+        public virtual DbSet<Weight> Weights { get; set; }
+        public virtual DbSet<LocalizedLength> LocalizedLengths { get; set; }
+        public virtual DbSet<LocalizedWeight> LocalizedWeights { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Make>()
