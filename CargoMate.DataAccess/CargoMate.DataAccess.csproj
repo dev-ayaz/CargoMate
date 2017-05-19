@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="DBContext\Country.cs" />
     <Compile Include="DBContext\DBContext.cs" />
-    <Compile Include="DBContext\LocalizedCapicity.cs" />
+    <Compile Include="DBContext\LocalizedCapacity.cs" />
     <Compile Include="DBContext\LocalizedCountry.cs" />
     <Compile Include="DBContext\LocalizedMake.cs" />
     <Compile Include="DBContext\LocalizedModel.cs" />
@@ -63,7 +63,7 @@
     <Compile Include="DBContext\Model.cs" />
     <Compile Include="DBContext\ModelYearCombination.cs" />
     <Compile Include="DBContext\PayLoadType.cs" />
-    <Compile Include="DBContext\VehicleCapicity.cs" />
+    <Compile Include="DBContext\VehicleCapacity.cs" />
     <Compile Include="DBContext\VehicleType.cs" />
     <Compile Include="DBContext\VehicleTypeConfiguration.cs" />
     <Compile Include="DBContext\Year.cs" />
