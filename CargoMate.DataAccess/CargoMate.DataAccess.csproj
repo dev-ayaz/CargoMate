@@ -52,13 +52,16 @@
   <ItemGroup>
     <Compile Include="DBContext\Country.cs" />
     <Compile Include="DBContext\DBContext.cs" />
+    <Compile Include="DBContext\Length.cs" />
     <Compile Include="DBContext\LocalizedCapacity.cs" />
     <Compile Include="DBContext\LocalizedCountry.cs" />
+    <Compile Include="DBContext\LocalizedLength.cs" />
     <Compile Include="DBContext\LocalizedMake.cs" />
     <Compile Include="DBContext\LocalizedModel.cs" />
     <Compile Include="DBContext\LocalizedPayLoadType.cs" />
     <Compile Include="DBContext\LocalizedVehicleType.cs" />
     <Compile Include="DBContext\LocalizedVehicleTypesConfiguration.cs" />
+    <Compile Include="DBContext\LocalizedWeight.cs" />
     <Compile Include="DBContext\Make.cs" />
     <Compile Include="DBContext\Model.cs" />
     <Compile Include="DBContext\ModelYearCombination.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="DBContext\VehicleCapacity.cs" />
     <Compile Include="DBContext\VehicleType.cs" />
     <Compile Include="DBContext\VehicleTypeConfiguration.cs" />
+    <Compile Include="DBContext\Weight.cs" />
     <Compile Include="DBContext\Year.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

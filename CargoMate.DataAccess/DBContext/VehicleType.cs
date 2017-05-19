@@ -13,7 +13,7 @@ namespace CargoMate.DataAccess.DBContext
         public VehicleType()
         {
             PayLoadTypes = new HashSet<PayLoadType>();
-            VehicleCapicities = new HashSet<VehicleCapacity>();
+            VehicleCapacities = new HashSet<VehicleCapacity>();
             VehicleTypeConfigurations = new HashSet<VehicleTypeConfiguration>();
             LocalizedVehicleTypes = new HashSet<LocalizedVehicleType>();
         }
@@ -28,7 +28,7 @@ namespace CargoMate.DataAccess.DBContext
         public virtual ICollection<PayLoadType> PayLoadTypes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VehicleCapacity> VehicleCapicities { get; set; }
+        public virtual ICollection<VehicleCapacity> VehicleCapacities { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VehicleTypeConfiguration> VehicleTypeConfigurations { get; set; }
