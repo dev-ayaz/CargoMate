@@ -5,9 +5,9 @@ namespace CargoMateSolution.Areas.Administration.Models.Vehicle
 {
     public class VehicleViewModel
     {
-        public List<VehicleCapicityListModel> VehicleCapcitiesList { get; set; }
+        public List<VehicleCapacityListModel> VehicleCapcitiesList { get; set; }
 
-        public VehicleCapicityViewModel CapicityViewModel { get; set; }
+        public VehicleCapacityViewModel CapicityViewModel { get; set; }
 
         public List<VehicleTypeViewModel> VehicleTypesList { get; set; }
 

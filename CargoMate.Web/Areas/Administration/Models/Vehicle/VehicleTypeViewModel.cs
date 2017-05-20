@@ -32,7 +32,7 @@ namespace CargoMateSolution.Areas.Administration.Models.Vehicle
         public bool IsEquipment { get; set; }
         public List<SelectListItem> Languges { get; set; } 
         public List<VehicleTypeConfigurationsViewModel> Configurations { get; set; }
-        public List<VehicleCapicityViewModel> Capicities { get; set; }
+        public List<VehicleCapacityViewModel> Capicities { get; set; }
 
     }
 }

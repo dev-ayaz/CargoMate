@@ -5,9 +5,9 @@ using CargoMateSolution.Shared;
 
 namespace CargoMateSolution.Areas.Administration.Models.Vehicle
 {
-    public class VehicleCapicityViewModel
+    public class VehicleCapacityViewModel
     {
-        public VehicleCapicityViewModel()
+        public VehicleCapacityViewModel()
         {
             VehicleTypesListItems = new List<SelectListItem>();
             Languges = GlobalProperties.Languges;
@@ -17,8 +17,8 @@ namespace CargoMateSolution.Areas.Administration.Models.Vehicle
         [Required(ErrorMessage = "Please enter name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please enter capicity")]
-        public int Capicity { get; set; }
+        [Required(ErrorMessage = "Please enter Capacity")]
+        public int Capacity { get; set; }
 
         [Required(ErrorMessage = "Please enter length")]
         public int Length { get; set; }
@@ -36,14 +36,14 @@ namespace CargoMateSolution.Areas.Administration.Models.Vehicle
         public List<SelectListItem> VehicleTypesListItems { get; set; }
     }
 
-    public class VehicleCapicityListModel
+    public class VehicleCapacityListModel
     {
 
 
         [Key]
         public long Id { get; set; }
         public string Name { get; set; }
-        public int Capicity { get; set; }
+        public int Capacity { get; set; }
         public int Length { get; set; }
         public int PalletNumber { get; set; }
         public string CultureCode { get; set; }

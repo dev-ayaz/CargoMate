@@ -14,5 +14,8 @@ namespace CargoMate.DataAccess.DBContext
         public bool? IsMetric { get; set; }
 
         public decimal? LengthMultiple { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LocalizedLength> LocalizedLengths { get; set; }
     }
 }

@@ -21,5 +21,7 @@ namespace CargoMate.DataAccess.DBContext
         public string CultureCode { get; set; }
 
         public long? LengthId { get; set; }
+
+        public virtual Length Length { get; set; }
     }
 }

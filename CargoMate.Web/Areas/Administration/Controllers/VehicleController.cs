@@ -20,11 +20,11 @@ namespace CargoMateSolution.Areas.Administration.Controllers
         {
             var vehicleModel = new VehicleViewModel
             {
-                VehicleCapcitiesList = DbContext.VehicleCapicities.Include("VehicleType.LocalizedVehicleTypes,LocalizedCapicities").Select(c => new VehicleCapicityListModel
+                VehicleCapcitiesList = DbContext.VehicleCapacities.Include("VehicleType.LocalizedVehicleTypes,LocalizedCapacities").Select(c => new VehicleCapacityListModel
                 {
                     Id = c.Id,
-                    Name = c.LocalizedCapicities.FirstOrDefault(lc => lc.CultureCode == "en-US").Name,
-                    Capicity = c.Capicity.Value,
+                    Name = c.LocalizedCapacities.FirstOrDefault(lc => lc.CultureCode == "en-US").Name,
+                    Capacity = c.Capacity.Value,
                     CultureCode = c.CultureCode,
                     Length = c.Length.Value,
                     PalletNumber = c.PalletNumber.Value,
@@ -48,7 +48,7 @@ namespace CargoMateSolution.Areas.Administration.Controllers
                     ImageUrl = c.ImageUrl,
                     VehicleTypeName = c.VehicleType.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == "en-US").Name
                 }).ToList(),
-                CapicityViewModel = new VehicleCapicityViewModel
+                CapicityViewModel = new VehicleCapacityViewModel
                 {
 
                     VehicleTypesListItems = DbContext.VehicleTypes.Include("LocalizedVehicleTypes").Select(t => new SelectListItem()
@@ -209,94 +209,94 @@ namespace CargoMateSolution.Areas.Administration.Controllers
 
         ////******************* Vehicle Capicities ******************************//
 
-        public JsonResult AddVehicleCapicity(VehicleCapicityViewModel capicityViewModel)
+        public JsonResult AddVehicleCapacity(VehicleCapacityViewModel capacityViewModel)
         {
             if (!ModelState.IsValid)
             {
                 return Json(CargoMateMessages.ModelError);
             }
-            if (capicityViewModel.Id > 0)
+            if (capacityViewModel.Id > 0)
             {
-                return Json(UpdateVehicleCapicity(capicityViewModel));
+                return Json(UpdateVehicleCapacity(capacityViewModel));
             }
-            var capicityModel = new VehicleCapicity
+            var capacityModel = new VehicleCapacity
             {
-                CultureCode = capicityViewModel.CultureCode,
-                Length = capicityViewModel.Length,
-                PalletNumber = capicityViewModel.PalletNumber,
-                VehicleTypeId = capicityViewModel.VehicleTypeId,
-                Capicity = capicityViewModel.Capicity
+                CultureCode = capacityViewModel.CultureCode,
+                Length = capacityViewModel.Length,
+                PalletNumber = capacityViewModel.PalletNumber,
+                VehicleTypeId = capacityViewModel.VehicleTypeId,
+                Capacity = capacityViewModel.Capacity
             };
-            var localizedCapicity = new LocalizedCapicity
+            var localizedCapacity = new LocalizedCapacity
             {
-                Name = capicityViewModel.Name,
-                CultureCode = capicityModel.CultureCode
+                Name = capacityViewModel.Name,
+                CultureCode = capacityModel.CultureCode
             };
-            capicityModel.LocalizedCapicities.Add(localizedCapicity);
+            capacityModel.LocalizedCapacities.Add(localizedCapacity);
 
-            DbContext.VehicleCapicities.Add(capicityModel);
+            DbContext.VehicleCapacities.Add(capacityModel);
 
             return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
 
         }
 
-        public object UpdateVehicleCapicity(VehicleCapicityViewModel capicityViewModel)
+        public object UpdateVehicleCapacity(VehicleCapacityViewModel capacityViewModel)
         {
-            var savedCapicity = DbContext.VehicleCapicities.FirstOrDefault(c => c.Id == capicityViewModel.Id);
-            if (savedCapicity == null)
+            var savedCapacity = DbContext.VehicleCapacities.FirstOrDefault(c => c.Id == capacityViewModel.Id);
+            if (savedCapacity == null)
             {
                 return CargoMateMessages.ModelError;
             }
-            savedCapicity.Capicity = capicityViewModel.Capicity;
-            savedCapicity.Length = capicityViewModel.Length;
-            savedCapicity.PalletNumber = capicityViewModel.PalletNumber;
-            var localizedCapicity = savedCapicity.LocalizedCapicities.FirstOrDefault(c => c.CultureCode == "en-US");
-            if (localizedCapicity != null)
+            savedCapacity.Capacity = capacityViewModel.Capacity;
+            savedCapacity.Length = capacityViewModel.Length;
+            savedCapacity.PalletNumber = capacityViewModel.PalletNumber;
+            var localizedCapacity = savedCapacity.LocalizedCapacities.FirstOrDefault(c => c.CultureCode == "en-US");
+            if (localizedCapacity != null)
             {
-                localizedCapicity.CultureCode = capicityViewModel.CultureCode;
-                localizedCapicity.Name = capicityViewModel.Name;
+                localizedCapacity.CultureCode = capacityViewModel.CultureCode;
+                localizedCapacity.Name = capacityViewModel.Name;
 
-                savedCapicity.LocalizedCapicities.Add(localizedCapicity);
+                savedCapacity.LocalizedCapacities.Add(localizedCapacity);
             }
-            DbContext.VehicleCapicities.Attach(savedCapicity);
-            var type = DbContext.Entry(savedCapicity);
+            DbContext.VehicleCapacities.Attach(savedCapacity);
+            var type = DbContext.Entry(savedCapacity);
             type.State = EntityState.Modified;
 
             return (DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
         }
-        public ActionResult EditVehicleCapicity(long capicityId)
+        public ActionResult EditVehicleCapacity(long capacityId)
         {
-            var capicityModel = DbContext.VehicleCapicities.Include("LocalizedCapicities").Where(c => c.Id == capicityId).Select(c => new VehicleCapicityViewModel
+            var capacityModel = DbContext.VehicleCapacities.Include("LocalizedCapacities").Where(c => c.Id == capacityId).Select(c => new VehicleCapacityViewModel
                 {
                     Id = c.Id,
-                    Capicity = c.Capicity.Value,
-                    CultureCode = c.LocalizedCapicities.FirstOrDefault(lc => lc.CultureCode == "en-US").CultureCode,
-                    Name = c.LocalizedCapicities.FirstOrDefault(lc => lc.CultureCode == "en-US").Name,
+                    Capacity = c.Capacity.Value,
+                    CultureCode = c.LocalizedCapacities.FirstOrDefault(lc => lc.CultureCode == "en-US").CultureCode,
+                    Name = c.LocalizedCapacities.FirstOrDefault(lc => lc.CultureCode == "en-US").Name,
                     VehicleTypeId = c.VehicleTypeId.Value,
                     PalletNumber = c.PalletNumber.Value,
                     Length = c.Length.Value
                 }).FirstOrDefault();
-            if (capicityModel == null)
+            if (capacityModel == null)
             {
-                return View("Partials/_AddVehicleCapicity", new VehicleCapicityViewModel());
+                return View("Partials/_AddVehicleCapicity", new VehicleCapacityViewModel());
             }
-            capicityModel.VehicleTypesListItems =
+            capacityModel.VehicleTypesListItems =
                 DbContext.VehicleTypes.Include("LocalizedVehicleTypes").Select(t => new SelectListItem()
                 {
                     Text = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == "en-US").Name,
                     Value = t.Id.ToString()
                 }).ToList();
 
-            return View("Partials/_AddVehicleCapicity", capicityModel);
+            return View("Partials/_AddVehicleCapicity", capacityModel);
         }
-        public ActionResult VehicleCapicitiesList()
+        public ActionResult VehicleCapacitiesList()
         {
             var vehicleCapcitiesList =
-                DbContext.VehicleCapicities.Include("VehicleType.LocalizedVehicleTypes,LocalizedCapicities").Select(c => new VehicleCapicityListModel
+                DbContext.VehicleCapacities.Include("VehicleType.LocalizedVehicleTypes,LocalizedCapacities").Select(c => new VehicleCapacityListModel
                 {
                     Id = c.Id,
-                    Name = c.LocalizedCapicities.FirstOrDefault(lc => lc.CultureCode == "en-US").Name,
-                    Capicity = c.Capicity.Value,
+                    Name = c.LocalizedCapacities.FirstOrDefault(lc => lc.CultureCode == "en-US").Name,
+                    Capacity = c.Capacity.Value,
                     CultureCode = c.CultureCode,
                     Length = c.Length.Value,
                     PalletNumber = c.PalletNumber.Value,
@@ -305,14 +305,14 @@ namespace CargoMateSolution.Areas.Administration.Controllers
             return View("Partials/_VehicleCapicities", vehicleCapcitiesList);
         }
 
-        public JsonResult VehicleCapicityDelete(long capicityId)
+        public JsonResult VehicleCapacityDelete(long capacityId)
         {
-            var capicity = DbContext.VehicleCapicities.FirstOrDefault(c => c.Id == capicityId);
-            if (capicity == null)
+            var capacity = DbContext.VehicleCapacities.FirstOrDefault(c => c.Id == capacityId);
+            if (capacity == null)
             {
                 return Json(CargoMateMessages.ModelError, JsonRequestBehavior.AllowGet);
             }
-            DbContext.VehicleCapicities.Remove(capicity);
+            DbContext.VehicleCapacities.Remove(capacity);
             return
                 Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse, JsonRequestBehavior.AllowGet);
         }
@@ -1088,6 +1088,89 @@ namespace CargoMateSolution.Areas.Administration.Controllers
             type.State = EntityState.Modified;
             return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
 
+        }
+
+        public ActionResult Units()
+        {
+            var unitViewModel = new UnitViewModel
+            {
+                LengthModel = new LengthModel(),
+                LengthModelList = DbContext.Lengths.Select(l=>new LengthModel
+                {
+                    Id = l.Id,
+                    IsMetric = l.IsMetric,
+                    LengthMultiple = l.LengthMultiple,
+                    ShortName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
+                    FullName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
+                    CultureCode = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode,
+                }).ToList(),
+
+                WeightModel = new WeightModel(),
+                WeightModelList = DbContext.Weights.Select(w=>new WeightModel
+                {
+                     Id = w.Id,
+                     IsMetric = w.IsMetric,
+                     WeightMultiple = w.WeightMultiple,
+                     ShortName = w.LocalizedWeights.FirstOrDefault(lw=>lw.CultureCode=="en-US").ShortName,
+                     FullName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
+                     CultureCode = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode
+                     
+                }).ToList()
+            };
+            return View(unitViewModel);
+        }
+
+        public ActionResult AddWeight(WeightModel weightModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(CargoMateMessages.ModelError);
+            }
+
+           
+            var weight = new Weight
+            {
+                IsMetric = weightModel.IsMetric,
+                 WeightMultiple = weightModel.WeightMultiple
+            };
+            var localizedWeight = new LocalizedWeight
+            {
+                ShortName = weightModel.ShortName,
+                CultureCode = weightModel.CultureCode,
+                FullName = weightModel.FullName
+            };
+            weight.LocalizedWeights.Add(localizedWeight);
+            DbContext.Weights.Add(weight);
+            return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
+        }
+
+        public ActionResult WeightList()
+        {
+            var weightModelList = DbContext.Weights.Select(w => new WeightModel
+            {
+                Id = w.Id,
+                IsMetric = w.IsMetric,
+                WeightMultiple = w.WeightMultiple,
+                ShortName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
+                FullName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
+                CultureCode = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode
+
+            }).ToList();
+
+            return View("Partials/_WeightList",weightModelList);
+
+        }
+
+        public JsonResult DeleteWeight(long weightId)
+        {
+            var weight = DbContext.Weights.FirstOrDefault(w => w.Id == weightId);
+            if (weight == null)
+            {
+                return Json(CargoMateMessages.ModelError, JsonRequestBehavior.AllowGet);
+            }
+            DbContext.Weights.Remove(weight);
+            return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse, JsonRequestBehavior.AllowGet);
+            
         }
 
     }

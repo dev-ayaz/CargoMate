@@ -12,9 +12,9 @@
     services: {
         controller: "Vehicle",
         actions: {
-            VehicleCapicitiesList: "VehicleCapicitiesList",
-            VehicleCapicityDelete: "VehicleCapicityDelete",
-            EditVehicleCapicity: "EditVehicleCapicity"
+            VehicleCapicitiesList: "VehicleCapacitiesList",
+            VehicleCapicityDelete: "VehicleCapacityDelete",
+            EditVehicleCapicity: "EditVehicleCapacity"
           
         }
     },
@@ -50,7 +50,7 @@
             var capicityId = $this.attr("data-capicityid");
 
             var url = [RequestHandler.getSiteRoot(), VehicleCapicities.services.controller, "/", VehicleCapicities.services.actions.VehicleCapicityDelete].join("");
-            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { capicityId: capicityId }, function (result) {
+            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { capacityId: capicityId }, function (result) {
                 CargoMateAlerts.actionAlert(result.MessageHeader, result.Message, result.IsError);
                 if (!result.IsError) {
                     $this.closest("tr").remove();
@@ -62,7 +62,7 @@
             var capicityId = $this.attr("data-capicityid");
 
             var url = [RequestHandler.getSiteRoot(), VehicleCapicities.services.controller, "/", VehicleCapicities.services.actions.EditVehicleCapicity].join("");
-            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { capicityId: capicityId }, function (result) {
+            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { capacityId: capicityId }, function (result) {
                 $(VehicleCapicities.selectors.EditVehicleCapicityFormContent).html(result);
                 $(VehicleCapicities.selectors.modalEditVehicleCapicity).modal("toggle");
                 $("select").select2({
