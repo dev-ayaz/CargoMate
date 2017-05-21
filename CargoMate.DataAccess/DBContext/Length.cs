@@ -9,6 +9,10 @@ namespace CargoMate.DataAccess.DBContext
     [Table("Configuration.Length")]
     public partial class Length
     {
+        public Length()
+        {
+            LocalizedLengths = new HashSet<LocalizedLength>();
+        }
         public long Id { get; set; }
 
         public bool? IsMetric { get; set; }

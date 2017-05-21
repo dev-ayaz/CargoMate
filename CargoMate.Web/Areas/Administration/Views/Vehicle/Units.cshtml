@@ -114,7 +114,7 @@
                                             </div>
                                         </div>
                                         <div class="dataTables_wrapper no-footer">
-                                            <div class="row" id="tblVehicleConfigurationList">
+                                            <div class="row" id="tblLengthList">
                                                 @Html.Partial("Partials/_LengthList", Model.LengthModelList)
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
 </div>
 
 @* Edit Vehicle Type *@
-<div class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" id="modalEditVehicleType">
+<div class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" id="modalEditWeight">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="portlet light bordered">
@@ -187,12 +187,12 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    @using (Ajax.BeginForm("UpdateVehicleType", null, null, new {id = "EditVehicleTypeForm" }))
+                    @using (Ajax.BeginForm("UpdateWeight", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Weight.callbacks.updateSuccess" }, new { id = "EditWeightForm" }))
                     {
 
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-horizontal">
-                            <div class="form-body" id="EditVehicleTypeFormContent">
+                            <div class="form-body" id="EditWeightFormContent">
 
                             </div>
                             <div class="row" style="margin-top: -20px">
@@ -219,7 +219,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-equalizer font-red-sunglo"></i>
-                        <span class="caption-subject font-red-sunglo bold uppercase">Lebgth Setup</span>
+                        <span class="caption-subject font-red-sunglo bold uppercase">Length Setup</span>
                         <span class="caption-helper">Add Length Unit</span>
                     </div>
                     <div class="actions">
@@ -228,7 +228,7 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    @using (Ajax.BeginForm("AddVehicleConfiguration", null, null, new { id = "AddLengthForm" }))
+                    @using (Ajax.BeginForm("AddLength", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Length.callbacks.insertSuccess" }, new { id = "AddLengthForm" }))
                     {
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-horizontal">
@@ -250,7 +250,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
-<div class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" id="EditVehicleConfigurationModal">
+<div class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" id="EditLengthModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="portlet light bordered">
@@ -266,20 +266,20 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    @using (Ajax.BeginForm("UpdateVehicleConfiguration", null, null, new { id = "UpdateLengthForm" }))
+                    @using (Ajax.BeginForm("UpdateLength", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Length.callbacks.updateSuccess" }, new { id = "UpdateLengthForm" }))
                     {
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-horizontal">
-                            <div class="form-body" id="EditVehicleConfigurationFormContent">
-                                @Html.Partial("partials/_AddLength", Model.LengthModel)
-                            </div>
-                            <div class="row" style="margin-top: -20px">
-                                <div class="col-sm-9 col-sm-offset-3">
-                                    <button type="submit" name="submitButton" value="save" style="padding-left: 20px; padding-right: 20px" class="btn green">Save</button>
-                                    <button type="reset" style="padding-left: 20px; padding-right: 20px" data-dismiss="modal" class="btn red">Close</button>
-                                </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-horizontal">
+                        <div class="form-body" id="EditLengthFormContent">
+
+                        </div>
+                        <div class="row" style="margin-top: -20px">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="submit" name="submitButton" value="save" style="padding-left: 20px; padding-right: 20px" class="btn green">Save</button>
+                                <button type="reset" style="padding-left: 20px; padding-right: 20px" data-dismiss="modal" class="btn red">Close</button>
                             </div>
                         </div>
+                    </div>
                     }
                     <!-- END FORM-->
                 </div>
@@ -292,7 +292,9 @@
 @section Scripts{
 
     <script src="~/Areas/Administration/Scripts/PageScripts/Weight.js"></script>
+    <script src="~/Areas/Administration/Scripts/PageScripts/Length.js"></script>
     <script>
         Weight.initEvents();
+        Length.initEvents();
     </script>
 }

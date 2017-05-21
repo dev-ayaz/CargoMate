@@ -4,17 +4,17 @@
         tblWeightList: "#tblWeightList",
         btnWeightDelete: ".WeightDelete",
         EditCapicityForm: "#EditCapicityForm",
-        btnVehicleCapicityEdit: ".VehicleCapicityEdit",
-        EditVehicleCapicityFormContent: "#EditVehicleCapicityFormContent",
-        EditVehicleCapicityForm: "#EditVehicleCapicityForm",
-        modalEditVehicleCapicity: "#modalEditVehicleCapicity"
+        btnWeightEdit: ".WeightEdit",
+        EditWeightFormContent: "#EditWeightFormContent",
+        EditWeightForm: "#EditWeightForm",
+        modalEditWeight: "#modalEditWeight"
     },
     services: {
         controller: "Vehicle",
         actions: {
             WeightList: "WeightList",
             DeleteWeight: "DeleteWeight",
-            EditVehicleCapicity: "EditVehicleCapacity"
+            EditWeight: "EditWeight"
 
         }
     },
@@ -40,7 +40,7 @@
                 RequestHandler.postToController(url, RequestHandler.formMethods.Get, {}, function (response) {
 
                     $(Weight.selectors.tblWeightList).html(response);
-                    $(Weight.selectors.modalEditVehicleCapicity).modal("hide");
+                    $(Weight.selectors.modalEditWeight).modal("hide");
                     Weight.initEvents();
                 });
             }
@@ -57,14 +57,14 @@
                 }
             });
         },
-        editVehicleCapicity: function ($this) {
+        EditWeight: function ($this) {
 
-            var capicityId = $this.attr("data-capicityid");
+            var weightId = $this.attr("data-id");
 
-            var url = [RequestHandler.getSiteRoot(), Weight.services.controller, "/", Weight.services.actions.EditVehicleCapicity].join("");
-            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { capacityId: capicityId }, function (result) {
-                $(Weight.selectors.EditVehicleCapicityFormContent).html(result);
-                $(Weight.selectors.modalEditVehicleCapicity).modal("toggle");
+            var url = [RequestHandler.getSiteRoot(), Weight.services.controller, "/", Weight.services.actions.EditWeight].join("");
+            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { weightId: weightId }, function (result) {
+                $(Weight.selectors.EditWeightFormContent).html(result);
+                $(Weight.selectors.modalEditWeight).modal("toggle");
                 $("select").select2({
                     dropdownAutoWidth: true,
                     width: false
@@ -85,9 +85,9 @@
             });
         });
 
-        $(Weight.selectors.btnVehicleCapicityEdit).click(function () {
+        $(Weight.selectors.btnWeightEdit).click(function () {
             var $this = $(this);
-            Weight.callbacks.editVehicleCapicity($this);
+            Weight.callbacks.EditWeight($this);
         });
 
     }

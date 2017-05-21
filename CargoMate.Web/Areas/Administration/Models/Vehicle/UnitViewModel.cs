@@ -39,7 +39,7 @@ namespace CargoMateSolution.Areas.Administration.Models.Vehicle
 
         public decimal? WeightMultiple { get; set; }
 
-        public bool? IsMetric { get; set; }
+        public bool IsMetric { get; set; }
 
         public List<SelectListItem> Languges { get; set; }
 
@@ -66,7 +66,7 @@ namespace CargoMateSolution.Areas.Administration.Models.Vehicle
 
         public decimal? LengthMultiple { get; set; }
 
-        public bool? IsMetric { get; set; }
+        public bool IsMetric { get; set; }
 
         public List<SelectListItem> Languges { get; set; }
 

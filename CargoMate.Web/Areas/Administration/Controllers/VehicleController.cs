@@ -1021,14 +1021,14 @@ namespace CargoMateSolution.Areas.Administration.Controllers
 
         public ActionResult PayLoadEdit(long payloadId)
         {
-            var model = DbContext.PayLoadTypes.Include("LocalizedPayLoadTypes").Where(pt => pt.Id == payloadId).Select(pt=>new PayLoadModel
+            var model = DbContext.PayLoadTypes.Include("LocalizedPayLoadTypes").Where(pt => pt.Id == payloadId).Select(pt => new PayLoadModel
             {
                 Id = pt.Id,
                 ImageUrl = pt.ImageUrl,
                 TypeId = pt.TypeId.Value,
-                Name = pt.LocalizedPayLoadTypes.FirstOrDefault(ptl=>ptl.CultureCode=="en-US").Name,
-                CultureCode = pt.LocalizedPayLoadTypes.FirstOrDefault(ptl => ptl.CultureCode == "en-US").CultureCode               
-                
+                Name = pt.LocalizedPayLoadTypes.FirstOrDefault(ptl => ptl.CultureCode == "en-US").Name,
+                CultureCode = pt.LocalizedPayLoadTypes.FirstOrDefault(ptl => ptl.CultureCode == "en-US").CultureCode
+
             }).FirstOrDefault();
             if (model != null)
             {
@@ -1037,7 +1037,7 @@ namespace CargoMateSolution.Areas.Administration.Controllers
                     {
                         Text = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == "en-US").Name,
                         Value = t.Id.ToString()
-                    }).ToList();               
+                    }).ToList();
             }
             return View("Partials/_AddPayLoadType", model);
         }
@@ -1095,10 +1095,10 @@ namespace CargoMateSolution.Areas.Administration.Controllers
             var unitViewModel = new UnitViewModel
             {
                 LengthModel = new LengthModel(),
-                LengthModelList = DbContext.Lengths.Select(l=>new LengthModel
+                LengthModelList = DbContext.Lengths.Select(l => new LengthModel
                 {
                     Id = l.Id,
-                    IsMetric = l.IsMetric,
+                    IsMetric = l.IsMetric.Value,
                     LengthMultiple = l.LengthMultiple,
                     ShortName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
                     FullName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
@@ -1106,15 +1106,15 @@ namespace CargoMateSolution.Areas.Administration.Controllers
                 }).ToList(),
 
                 WeightModel = new WeightModel(),
-                WeightModelList = DbContext.Weights.Select(w=>new WeightModel
+                WeightModelList = DbContext.Weights.Select(w => new WeightModel
                 {
-                     Id = w.Id,
-                     IsMetric = w.IsMetric,
-                     WeightMultiple = w.WeightMultiple,
-                     ShortName = w.LocalizedWeights.FirstOrDefault(lw=>lw.CultureCode=="en-US").ShortName,
-                     FullName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
-                     CultureCode = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode
-                     
+                    Id = w.Id,
+                    IsMetric = w.IsMetric.Value,
+                    WeightMultiple = w.WeightMultiple,
+                    ShortName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
+                    FullName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
+                    CultureCode = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode
+
                 }).ToList()
             };
             return View(unitViewModel);
@@ -1127,11 +1127,11 @@ namespace CargoMateSolution.Areas.Administration.Controllers
                 return Json(CargoMateMessages.ModelError);
             }
 
-           
+
             var weight = new Weight
             {
                 IsMetric = weightModel.IsMetric,
-                 WeightMultiple = weightModel.WeightMultiple
+                WeightMultiple = weightModel.WeightMultiple
             };
             var localizedWeight = new LocalizedWeight
             {
@@ -1149,7 +1149,7 @@ namespace CargoMateSolution.Areas.Administration.Controllers
             var weightModelList = DbContext.Weights.Select(w => new WeightModel
             {
                 Id = w.Id,
-                IsMetric = w.IsMetric,
+                IsMetric = w.IsMetric.Value,
                 WeightMultiple = w.WeightMultiple,
                 ShortName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
                 FullName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
@@ -1157,7 +1157,7 @@ namespace CargoMateSolution.Areas.Administration.Controllers
 
             }).ToList();
 
-            return View("Partials/_WeightList",weightModelList);
+            return View("Partials/_WeightList", weightModelList);
 
         }
 
@@ -1170,8 +1170,144 @@ namespace CargoMateSolution.Areas.Administration.Controllers
             }
             DbContext.Weights.Remove(weight);
             return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult EditWeight(long weightId)
+        {
+            var weight = DbContext.Weights.Where(w => w.Id == weightId).Select(w => new WeightModel
+            {
+                Id = w.Id,
+                IsMetric = w.IsMetric.Value,
+                WeightMultiple = w.WeightMultiple,
+                CultureCode = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode,
+                ShortName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
+                FullName = w.LocalizedWeights.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName
+            }).FirstOrDefault();
+            return View("Partials/_AddWeight", weight);
+        }
+
+        public JsonResult UpdateWeight(WeightModel weightModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(CargoMateMessages.ModelError);
+            }
+            var localizedWeight = DbContext.LocalizedWeights
+                                  .FirstOrDefault(lw => lw.WeightId == weightModel.Id && lw.CultureCode == "en-US");
+            if (localizedWeight != null)
+            {
+                localizedWeight.FullName = weightModel.FullName;
+                localizedWeight.ShortName = weightModel.ShortName;
+            }
+            var savedWeight = DbContext.Weights.FirstOrDefault(w => w.Id == weightModel.Id);
+            if (savedWeight != null)
+            {
+                savedWeight.IsMetric = weightModel.IsMetric;
+                savedWeight.WeightMultiple = weightModel.WeightMultiple;
+                savedWeight.LocalizedWeights.Add(localizedWeight);
+            }
+
+            DbContext.Weights.Attach(savedWeight);
+            var weights = DbContext.Entry(savedWeight);
+            weights.State = EntityState.Modified;
+            return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
+        }
+
+        public ActionResult AddLength(LengthModel lengthModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(CargoMateMessages.ModelError);
+            }
+
+
+            var length = new Length
+            {
+                IsMetric = lengthModel.IsMetric,
+                LengthMultiple = lengthModel.LengthMultiple,
+                LocalizedLengths = new List<LocalizedLength>
+                {
+                    new LocalizedLength
+                 {
+                ShortName = lengthModel.ShortName,
+                CultureCode = lengthModel.CultureCode,
+                FullName = lengthModel.FullName
+                 }
+                }
+            };
+            DbContext.Lengths.Add(length);
+            return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
+        }
+
+        public ActionResult LengthList()
+        {
+            var lengthList = DbContext.Lengths.Select(l => new LengthModel
+            {
+                Id = l.Id,
+                IsMetric = l.IsMetric.Value,
+                LengthMultiple = l.LengthMultiple,
+                ShortName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
+                FullName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName,
+                CultureCode = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode
+
+            }).ToList();
+
+            return View("Partials/_LengthList", lengthList);
+
+        }
+
+        public JsonResult DeleteLength(long lengthId)
+        {
+            var length = DbContext.Lengths.FirstOrDefault(l => l.Id == lengthId);
+            if (length == null)
+            {
+                return Json(CargoMateMessages.ModelError, JsonRequestBehavior.AllowGet);
+            }
+            DbContext.Lengths.Remove(length);
+            return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse, JsonRequestBehavior.AllowGet);
             
         }
 
+        public ActionResult EditLength(long lengthId)
+        {
+            var length = DbContext.Lengths.Where(l => l.Id == lengthId).Select(l => new LengthModel
+            {
+                Id = l.Id,
+                IsMetric = l.IsMetric.Value,
+                LengthMultiple = l.LengthMultiple,
+                CultureCode = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").CultureCode,
+                ShortName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").ShortName,
+                FullName = l.LocalizedLengths.FirstOrDefault(lw => lw.CultureCode == "en-US").FullName
+            }).FirstOrDefault();
+            return View("Partials/_AddLength", length);
+        }
+
+        public JsonResult UpdateLength(LengthModel lengthModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(CargoMateMessages.ModelError);
+            }
+            var localizedLength = DbContext.LocalizedLengths
+                                  .FirstOrDefault(l => l.LengthId == lengthModel.Id && l.CultureCode == "en-US");
+            if (localizedLength != null)
+            {
+                localizedLength.FullName = lengthModel.FullName;
+                localizedLength.ShortName = lengthModel.ShortName;
+            }
+            var savedLength = DbContext.Lengths.FirstOrDefault(l => l.Id == lengthModel.Id);
+            if (savedLength != null)
+            {
+                savedLength.IsMetric = lengthModel.IsMetric;
+                savedLength.LengthMultiple = lengthModel.LengthMultiple;
+                savedLength.LocalizedLengths.Add(localizedLength);
+            }
+
+            DbContext.Lengths.Attach(savedLength);
+            var weights = DbContext.Entry(savedLength);
+            weights.State = EntityState.Modified;
+            return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
+        }
     }
 }

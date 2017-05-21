@@ -1,5 +1,9 @@
 ﻿@model CargoMateSolution.Areas.Administration.Models.Vehicle.LengthModel
+@{
+    Layout = null;
+}
 
+@Html.HiddenFor(model => model.Id)
 <div class="form-group">
     @Html.LabelFor(model => model.CultureCode, htmlAttributes: new { @class = "control-label col-md-3" })
     <div class="col-md-9">
@@ -35,7 +39,10 @@
 <div class="form-group">
     @Html.LabelFor(model => model.IsMetric, htmlAttributes: new { @class = "control-label col-md-3" })
     <div class="col-md-9">
-        @Html.EditorFor(model => model.IsMetric, new { htmlAttributes = new { @class = "form-control" } })
+        <label class="mt-checkbox mt-checkbox-outline">
+            @Html.CheckBoxFor(model => model.IsMetric, new { htmlAttributes = new { } })
+            <span></span>
+        </label>
         @Html.ValidationMessageFor(model => model.IsMetric, "", new { @class = "text-danger" })
     </div>
 </div>

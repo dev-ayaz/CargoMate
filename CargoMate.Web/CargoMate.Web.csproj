@@ -194,9 +194,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\CargoMateMessages.cs" />
     <Compile Include="Shared\GlobalProperties.cs" />
@@ -2102,6 +2099,7 @@
     <Content Include="AppLayout\pages\scripts\ui-tree.min.js" />
     <Content Include="AppLayout\pages\scripts\widgets.js" />
     <Content Include="AppLayout\pages\scripts\widgets.min.js" />
+    <Content Include="Areas\Administration\Scripts\PageScripts\Length.js" />
     <Content Include="Areas\Administration\Scripts\PageScripts\PayLoadTypes.js" />
     <Content Include="Areas\Administration\Scripts\PageScripts\VehicelModelYear.js" />
     <Content Include="Areas\Administration\Scripts\PageScripts\VehicleCapicities.js" />
@@ -2110,8 +2108,6 @@
     <Content Include="Areas\Administration\Scripts\PageScripts\VehicleModel.js" />
     <Content Include="Areas\Administration\Scripts\PageScripts\VehicleTypes.js" />
     <Content Include="Areas\Administration\Scripts\PageScripts\Weight.js" />
-    <Content Include="bin\CargoMateSolution.dll" />
-    <Content Include="bin\CargoMateSolution.pdb" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
