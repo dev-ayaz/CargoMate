@@ -4,16 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Results;
 using CargoMate.DataAccess.DBContext;
 
 namespace CargoMate.WebAPI.Controllers
 {
-    public class VehicleEndpointController : BaseController
+    public class BaseController : ApiController
     {
-        public List<> Get()
+        public DBContext DbContext;
+        public BaseController()
         {
-            return "Muhammad";
-        } 
+            DbContext = new DBContext();
+
+        }
     }
 }
