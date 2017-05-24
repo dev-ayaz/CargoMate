@@ -15,6 +15,6 @@ namespace CargoMateSolution.Shared
 
         public static string IsExtraNetAdmin= "SessionKeys:IsExtraNetAdmin";
 
-        public static string VehicleImagePath = "../../../SystemImages/VehicleImages/";
+        public static string VehicleImagePath = "SystemImages/VehicleImages/";
     }
 }

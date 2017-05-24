@@ -13,7 +13,7 @@ namespace CargoMate.WebAPI.Controllers
     public class VehicleEndpointController : BaseController
     {
         [HttpGet]
-        public IEnumerable<VehicleTypeViewModel> Get(string cultureCode="en-US" , int limit=10)
+        public VehicleTypes Get(string cultureCode = "en-US", int limit = 10)
         {
             var vehicleTypeList = DbContext.VehicleTypes.Include("LocalizedVehicleTypes").Select(t => new VehicleTypeViewModel
             {
@@ -21,10 +21,10 @@ namespace CargoMate.WebAPI.Controllers
                 Name = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == cultureCode).Name,
                 Descreption = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == cultureCode).Descreption,
                 IsEquipment = t.IsEquipment,
-                ImageUrl = WebConfigKeys.ImagesBasePath+t.ImageUrl
+                ImageUrl = WebConfigKeys.ImagesBasePath+t.ImageUrl.Substring(9,t.ImageUrl.Length-9)
             }).Take(limit).ToList();
 
-            return vehicleTypeList;
+            return new VehicleTypes { Items = vehicleTypeList };
         } 
     }
 }

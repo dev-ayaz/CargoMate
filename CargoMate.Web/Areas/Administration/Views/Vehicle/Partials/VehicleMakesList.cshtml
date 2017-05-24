@@ -21,10 +21,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            #@item.Id
+            # @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
-            <img alt="" class="img-circle" src="@item.ImageUrl" style="width: 40px;height:40px">
+            <img alt="" class="img-circle" src="../../../@item.ImageUrl" style="width: 40px;height:40px">
         </td>
         <td>
             @item.Name

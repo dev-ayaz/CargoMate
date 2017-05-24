@@ -5,6 +5,10 @@ using System.Web;
 
 namespace CargoMate.WebAPI.Models.Vehicle
 {
+    public class VehicleTypes
+    {
+        public List<VehicleTypeViewModel> Items { get; set; } 
+    }
     public class VehicleTypeViewModel
     {
         public long TypeId { get; set; }
