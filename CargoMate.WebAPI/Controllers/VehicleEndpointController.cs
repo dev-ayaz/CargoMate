@@ -13,18 +13,51 @@ namespace CargoMate.WebAPI.Controllers
     public class VehicleEndpointController : BaseController
     {
         [HttpGet]
-        public VehicleTypes Get(string cultureCode = "en-US", int limit = 10)
+        public VehicleTypes VehicleTypes(string cultureCode = "en-US", int limit = 10)
         {
             var vehicleTypeList = DbContext.VehicleTypes.Include("LocalizedVehicleTypes").Select(t => new VehicleTypeViewModel
             {
                 TypeId = t.Id,
                 Name = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == cultureCode).Name,
-                Descreption = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == cultureCode).Descreption,
+                Description = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == cultureCode).Descreption,
                 IsEquipment = t.IsEquipment,
-                ImageUrl = WebConfigKeys.ImagesBasePath+t.ImageUrl.Substring(9,t.ImageUrl.Length-9)
+                ImageUrl = WebConfigKeys.ImagesBasePath+t.ImageUrl
             }).Take(limit).ToList();
 
             return new VehicleTypes { Items = vehicleTypeList };
-        } 
+        }
+
+
+        [HttpGet]
+        public VehicleCapacityViewModel VehcilCapacities(string cultureCode = "en-US", int limit = 10)
+        {
+            var capacities = DbContext.VehicleCapacities.Include("LocalizedCapacities").Select(c => new CapacityViewModel
+            {
+                Id = c.Id,
+                Capacity = c.Capacity.Value,
+                Length = c.Length.Value,
+                PalletNumber = c.PalletNumber.Value,
+                Name = c.LocalizedCapacities.FirstOrDefault(lc=>lc.CultureCode==cultureCode).Name
+            }).Take(limit).ToList();
+
+            return new VehicleCapacityViewModel{Items = capacities};
+
+        }
+
+        [HttpGet]
+
+        public VehicleConfigurationsViewModel VehicleConfigurations(string cultureCode = "en-US", int limit = 10)
+        {
+            var configurations = DbContext.VehicleTypeConfigurations.Include("LocalizedVehicleTypesConfigurations").Select(c => new ConfigurationsViewModel
+            {
+                Id = c.Id,
+                ImageUrl = c.ImageUrl,
+                Name = c.LocalizedVehicleTypesConfigurations.FirstOrDefault(lc=>lc.CultureCode==cultureCode).Name,
+                Description = c.LocalizedVehicleTypesConfigurations.FirstOrDefault(lc=>lc.CultureCode==cultureCode).Descreption
+
+            }).ToList();
+
+            return new VehicleConfigurationsViewModel{Items = configurations};
+        }
     }
 }
