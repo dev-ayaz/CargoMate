@@ -2,7 +2,7 @@
 
 @{
     Layout = null;
-    var RowNumber = 0;
+    var rowNumber = 0;
 }
 <table class="table">
     <tr>
@@ -27,7 +27,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @(RowNumber+=1)
+            @(rowNumber+=1)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ShortName)

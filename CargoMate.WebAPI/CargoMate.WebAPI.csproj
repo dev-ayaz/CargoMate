@@ -87,6 +87,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Vehicle\PayLoadTypeViewModel.cs" />
     <Compile Include="Models\Vehicle\VehicleCapacityViewModel.cs" />
     <Compile Include="Models\Vehicle\VehicleConfigurationsViewModel.cs" />
     <Compile Include="Models\Vehicle\VehicleTypeViewModel.cs" />

@@ -59,5 +59,18 @@ namespace CargoMate.WebAPI.Controllers
 
             return new VehicleConfigurationsViewModel{Items = configurations};
         }
+
+        [HttpGet]
+        public PayLoadTypeViewModel PayLoadTypes(string cultureCode = "en-US", int limit = 10)
+        {
+            var payloadTypes = DbContext.PayLoadTypes.Include("LocalizedPayLoadTypes").Select(pt => new PayLoadType
+            {
+                Id = pt.Id,
+                ImageUrl = pt.ImageUrl,
+                Name = pt.LocalizedPayLoadTypes.FirstOrDefault(lpt=>lpt.CultureCode==cultureCode).Name
+            }).Take(limit).ToList();
+
+            return  new PayLoadTypeViewModel{Items = payloadTypes};
+        }
     }
 }

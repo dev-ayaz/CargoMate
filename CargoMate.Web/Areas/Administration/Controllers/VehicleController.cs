@@ -20,6 +20,7 @@ namespace CargoMateSolution.Areas.Administration.Controllers
         {
             var vehicleModel = new VehicleViewModel
             {
+
                 VehicleCapcitiesList = DbContext.VehicleCapacities.Include("VehicleType.LocalizedVehicleTypes,LocalizedCapacities").Select(c => new VehicleCapacityListModel
                 {
                     Id = c.Id,
