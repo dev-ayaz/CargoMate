@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CargoMate.DataAccess.DBContext;
 
 namespace CargoMate.WebAPI.Models.Vehicle
 {
@@ -16,5 +17,9 @@ namespace CargoMate.WebAPI.Models.Vehicle
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public bool? IsEquipment { get; set; }
+
+        public List<CapacityViewModel> VehicleCapacities { get;set ;}
+
+        public List<ConfigurationsViewModel> Configurations { get; set; } 
     }
 }

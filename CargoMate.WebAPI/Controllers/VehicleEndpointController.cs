@@ -15,13 +15,29 @@ namespace CargoMate.WebAPI.Controllers
         [HttpGet]
         public VehicleTypes VehicleTypes(string cultureCode = "en-US", int limit = 10)
         {
-            var vehicleTypeList = DbContext.VehicleTypes.Include("LocalizedVehicleTypes").Select(t => new VehicleTypeViewModel
+            var vehicleTypeList = DbContext.VehicleTypes.Include("LocalizedVehicleTypes,VehicleCapacities,VehicleCapacities.LocalizedCapacities,VehicleTypeConfigurations,VehicleTypeConfigurations.LocalizedVehicleTypesConfigurations").Select(t => new VehicleTypeViewModel
             {
                 TypeId = t.Id,
                 Name = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == cultureCode).Name,
                 Description = t.LocalizedVehicleTypes.FirstOrDefault(lt => lt.CultureCode == cultureCode).Descreption,
                 IsEquipment = t.IsEquipment,
-                ImageUrl = WebConfigKeys.ImagesBasePath+t.ImageUrl
+                ImageUrl = WebConfigKeys.ImagesBasePath+t.ImageUrl,
+                VehicleCapacities = t.VehicleCapacities.Select(c=>c!=null? new CapacityViewModel
+                {
+                    Id = c.Id,
+                    Capacity = c.Capacity.Value,
+                    Length = c.Length.Value,
+                    PalletNumber = c.PalletNumber.Value,
+                    Name = c.LocalizedCapacities.FirstOrDefault(lt => lt.CultureCode == cultureCode).Name,
+                    
+                }:null).ToList(),
+                Configurations = t.VehicleTypeConfigurations.Select(c=>c!=null? new ConfigurationsViewModel
+                {
+                 Id   = c.Id,
+                 ImageUrl = c.ImageUrl,
+                 Description = c.LocalizedVehicleTypesConfigurations.FirstOrDefault(lt => lt.CultureCode == cultureCode).Descreption,
+                 Name = c.LocalizedVehicleTypesConfigurations.FirstOrDefault(lt => lt.CultureCode == cultureCode).Name
+                }:null).ToList()
             }).Take(limit).ToList();
 
             return new VehicleTypes { Items = vehicleTypeList };
@@ -72,5 +88,34 @@ namespace CargoMate.WebAPI.Controllers
 
             return  new PayLoadTypeViewModel{Items = payloadTypes};
         }
+
+
+        [HttpGet]
+        public YearViewModel YearsList(string cultureCode = "en-US", int limit = 10)
+        {
+            var yearsList = DbContext.Years.Select(y => new YearModel
+            {
+                Id = y.Id,
+                Name = y.YearName
+            }).Take(limit).ToList();
+
+            return new YearViewModel { Items = yearsList };
+        }
+
+
+        [HttpGet]
+        public VehicleModelViewModel VehicleModels(string cultureCode = "en-US", int limit = 10)
+        {
+            var models = DbContext.Models.Include("").Select(m => new VehicleModel
+            {
+                Id = m.Id,
+                Name = m.LocalizedModels.FirstOrDefault(lm=>lm.CultureCode=="en-US").Name,
+                ImageUrl = m.ImageURL
+            }).Take(limit).ToList();
+
+            return new VehicleModelViewModel { Items = models };
+        }
+
+
     }
 }
