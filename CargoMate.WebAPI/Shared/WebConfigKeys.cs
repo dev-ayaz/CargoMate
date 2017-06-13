@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 
-namespace CargoMate.WebAPI.Shared
+namespace CargoMate.WebAPI
 {
     public static class WebConfigKeys
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 
@@ -39,5 +40,31 @@ namespace CargoMateSolution.Shared
             //}
             
         }
+
+        public static string SaveImageFromBase64(string imgStr)
+        {
+            try
+            {
+                var random = new Random();
+                var randomNumber = random.Next(0, 100);
+
+                var imageName = string.Format("VehicleRegistrationImage-{0}-{1}.jpg", DateTime.Now.ToString("yyyyMMddTHHmmss"), randomNumber);
+
+                var imgPath = Path.Combine(VehicleImagesUrl, imageName);
+
+                byte[] imageBytes = Convert.FromBase64String(imgStr.Split(',')[1]);
+
+                File.WriteAllBytes(imgPath, imageBytes);
+
+                return imageName;
+            }
+            catch (Exception)
+            {
+                
+                return string.Empty;
+            }
+        }
     }
+
+
 }

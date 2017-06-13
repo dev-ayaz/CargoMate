@@ -208,7 +208,7 @@ namespace CargoMateSolution.Areas.Administration.Controllers
         }
 
 
-        ////******************* Vehicle Capicities ******************************//
+        ////******************* Vehicle Capacities ******************************//
 
         public JsonResult AddVehicleCapacity(VehicleCapacityViewModel capacityViewModel)
         {
@@ -850,9 +850,9 @@ namespace CargoMateSolution.Areas.Administration.Controllers
             return Json(DbContext.SaveChanges() > 0 ? CargoMateMessages.SuccessResponse : CargoMateMessages.FailureResponse);
         }
 
-        public JsonResult DeleteVehicelModelYear(long modelYearlId)
+        public JsonResult DeleteVehicelModelYear(long modelYearId)
         {
-            var model = DbContext.ModelYearCombinations.FirstOrDefault(m => m.Id == modelYearlId);
+            var model = DbContext.ModelYearCombinations.FirstOrDefault(m => m.Id == modelYearId);
             if (model == null)
             {
                 return Json(CargoMateMessages.ModelError, JsonRequestBehavior.AllowGet);

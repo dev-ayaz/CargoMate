@@ -14,6 +14,15 @@ namespace CargoMate.DataAccess.DBContext
         [StringLength(500)]
         public string Name { get; set; }
 
+        [StringLength(50)]
+        public string CountryCode { get; set; }
+
+        [StringLength(50)]
+        public string CurrencyLong { get; set; }
+
+        [StringLength(50)]
+        public string CurrencyCode { get; set; }
+
         public long? CountryId { get; set; }
 
         [StringLength(10)]

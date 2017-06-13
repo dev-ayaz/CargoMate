@@ -18,5 +18,7 @@ namespace CargoMate.WebAPI.Models.Vehicle
 
         public string ImageUrl { get; set; }
 
+        public List<YearModel> Years { get; set; } 
+
     }
 }

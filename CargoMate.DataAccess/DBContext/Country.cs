@@ -13,10 +13,20 @@ namespace CargoMate.DataAccess.DBContext
         public Country()
         {
             Makes = new HashSet<Make>();
+            Drivers = new HashSet<Driver>();
             LocalizedCountries = new HashSet<LocalizedCountry>();
+            Vehicles = new HashSet<Vehicle>();
         }
 
         public long Id { get; set; }
+
+        [StringLength(50)]
+        public string CurrencySymbol { get; set; }
+
+        [StringLength(10)]
+        public string PhonCode { get; set; }
+
+        public string Flag { get; set; }
 
         public bool? IsActive { get; set; }
 
@@ -24,6 +34,12 @@ namespace CargoMate.DataAccess.DBContext
         public virtual ICollection<Make> Makes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Driver> Drivers { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LocalizedCountry> LocalizedCountries { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vehicle> Vehicles { get; set; }
     }
 }

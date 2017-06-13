@@ -49,7 +49,7 @@
             var modelYearId = $this.attr("data-modelyearid");
 
             var url = [RequestHandler.getSiteRoot(), VehicelModelYear.services.controller, "/", VehicelModelYear.services.actions.DeleteVehicelModelYear].join("");
-            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { modelYearId: modelYearId }, function (result) {
+            RequestHandler.postToController(url, RequestHandler.formMethods.Get, { modelYearlId: modelYearId }, function (result) {
                 CargoMateAlerts.actionAlert(result.MessageHeader, result.Message, result.IsError);
                 if (!result.IsError) {
                     $this.closest("tr").remove();

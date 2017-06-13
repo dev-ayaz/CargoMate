@@ -50,15 +50,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBContext\Company.cs" />
     <Compile Include="DBContext\Country.cs" />
+    <Compile Include="DBContext\Customer.cs" />
+    <Compile Include="DBContext\CustomerStatus.cs" />
     <Compile Include="DBContext\DBContext.cs" />
+    <Compile Include="DBContext\Driver.cs" />
+    <Compile Include="DBContext\DriverStatus.cs" />
+    <Compile Include="DBContext\GeoAddress.cs" />
+    <Compile Include="DBContext\InsuranceCompany.cs" />
     <Compile Include="DBContext\Length.cs" />
     <Compile Include="DBContext\LocalizedCapacity.cs" />
     <Compile Include="DBContext\LocalizedCountry.cs" />
+    <Compile Include="DBContext\LocalizedCustomerStatus.cs" />
+    <Compile Include="DBContext\LocalizedDriverStatus.cs" />
+    <Compile Include="DBContext\LocalizedInsuranceCompany.cs" />
     <Compile Include="DBContext\LocalizedLength.cs" />
     <Compile Include="DBContext\LocalizedMake.cs" />
     <Compile Include="DBContext\LocalizedModel.cs" />
     <Compile Include="DBContext\LocalizedPayLoadType.cs" />
+    <Compile Include="DBContext\LocalizedTripType.cs" />
     <Compile Include="DBContext\LocalizedVehicleType.cs" />
     <Compile Include="DBContext\LocalizedVehicleTypesConfiguration.cs" />
     <Compile Include="DBContext\LocalizedWeight.cs" />
@@ -66,7 +77,12 @@
     <Compile Include="DBContext\Model.cs" />
     <Compile Include="DBContext\ModelYearCombination.cs" />
     <Compile Include="DBContext\PayLoadType.cs" />
+    <Compile Include="DBContext\PreferredAddress.cs" />
+    <Compile Include="DBContext\TripType.cs" />
+    <Compile Include="DBContext\Vehicle.cs" />
     <Compile Include="DBContext\VehicleCapacity.cs" />
+    <Compile Include="DBContext\VehicleDriverCombination.cs" />
+    <Compile Include="DBContext\VehicleInsurance.cs" />
     <Compile Include="DBContext\VehicleType.cs" />
     <Compile Include="DBContext\VehicleTypeConfiguration.cs" />
     <Compile Include="DBContext\Weight.cs" />
@@ -79,7 +95,9 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
