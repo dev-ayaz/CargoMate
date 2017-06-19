@@ -12,6 +12,7 @@ namespace CargoMateSolution
             json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             configuration.Formatters.Remove(configuration.Formatters.XmlFormatter);
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
+            configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling= Newtonsoft.Json.ReferenceLoopHandling.Ignore; 
 
             // Web API routes
             configuration.MapHttpAttributeRoutes();

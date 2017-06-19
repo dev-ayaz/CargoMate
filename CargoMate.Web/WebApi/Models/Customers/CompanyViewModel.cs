@@ -13,7 +13,7 @@ namespace CargoMateSolution.WebApi.Models.Customers
 
         public string Name { get; set; }
 
-        public GeoAddress GeoAddress { get; set; }
+        public GeoAddressViewModel GeoAddress { get; set; }
 
  
         public string Location { get; set; }

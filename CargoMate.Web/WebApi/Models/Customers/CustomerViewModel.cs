@@ -6,7 +6,18 @@ using System.Linq;
 using System.Web;
 
 namespace CargoMateSolution.WebApi.Models.Customers
+
+
 {
+
+    public class CustomerDisplayViewModel
+    {
+
+        public CustomerViewModel Customer { get; set; }
+
+        public CompanyViewModel Company { get; set; }
+    }
+
     public class CustomerViewModel
     {
 

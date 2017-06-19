@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using CargoMate.DataAccess.DBContext;
 using CargoMateSolution.Shared;
+using CargoMateSolution.WebApi.Models;
 using CargoMateSolution.WebApi.Models.Customers;
 
 namespace CargoMateSolution.WebApi.Controllers
@@ -79,6 +80,47 @@ namespace CargoMateSolution.WebApi.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, DbContext.SaveChanges());
 
+        }
+
+        public CustomerDisplayViewModel GetCustomerByPhoneNumber(string phoneNumber)
+        {
+            return DbContext.Customers.Include("Company").Include("Company.GeoAddress").Where(c => c.PhoneNumber == phoneNumber).Select(c => new CustomerDisplayViewModel
+            {
+                Customer = new CustomerViewModel
+                {
+                    CompanyId = c.CompanyId,
+                    CustomerId = c.CustomerId,
+                    DateOfBirth = c.DateOfBirth.Value,
+                    EmailAddress = c.EmailAddress,
+                    Gender = c.Gender.Value,
+                    ImageUrl = c.ImageUrl,
+                    Name = c.Name,
+                    PhoneNumber = c.PhoneNumber
+                },
+                Company = new CompanyViewModel
+                {
+                    CrNumber = c.Company.CrNumber.Value,
+                    Id = c.Company.Id,
+                    Location = c.Company.Location,
+                    Logo = c.Company.Logo,
+                    Name = c.Company.Name,
+                    PhoneNumber = c.Company.PhoneNumber,
+                    PoBox = c.Company.PoBox,
+                    WebSiteUrl = c.Company.WebSiteUrl,
+                    GeoAddress = new GeoAddressViewModel
+                    {
+                        Id = c.Company.GeoAddress.Id,
+                        AdministrativeAreaLevel1 = c.Company.GeoAddress.AdministrativeAreaLevel1,
+                        AdministrativeAreaLevel2 = c.Company.GeoAddress.AdministrativeAreaLevel2,
+                        Country = c.Company.GeoAddress.Country,
+                        Locality = c.Company.GeoAddress.Locality,
+                        PostalCode = c.Company.GeoAddress.PostalCode,
+                        Route = c.Company.GeoAddress.Route,
+                        SubLocality = c.Company.GeoAddress.SubLocality
+                    }
+                }
+
+            }).FirstOrDefault();
         }
     }
 }
