@@ -2362,7 +2362,6 @@
     <Content Include="fonts\Simple-Line-Icons.woff2" />
     <Content Include="images\bg\4.png" />
     <Content Include="images\bg\5.jpg" />
-    <Content Include="images\logo4.jpg" />
     <Content Include="images\attraction\1.jpg" />
     <Content Include="images\attraction\2.jpg" />
     <Content Include="images\attraction\3.jpg" />
@@ -2528,6 +2527,7 @@
     <Content Include="images\logo1.png" />
     <Content Include="images\logo2.png" />
     <Content Include="images\logo3.png" />
+    <Content Include="images\logo4.jpg" />
     <Content Include="images\map-form-bg.jpg" />
     <Content Include="images\map-icon-2.png" />
     <Content Include="images\map-marker.jpg" />
