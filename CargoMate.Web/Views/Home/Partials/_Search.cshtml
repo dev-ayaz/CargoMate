@@ -1,46 +1,62 @@
-﻿<div class="reserve-form">
+﻿<!-- SEARCH TABS -->
+<section>
     <div class="container">
-        <div class="row reserve-form-wrap">
-            <div class="form-head clearfix">
-                <div class="location">
-                    <h2>Reserve your Vehicle</h2>
+        <div class="awe-search-tabs-2 tabs">
+            <ul>
+                <li>
+                    <a href="#awe-search-tabs-4">
+                        Search a vehicle <i class="fa fa-search pull-right"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="awe-search-tabs__content tabs__content">
+                <div id="awe-search-tabs-4" class="search-car">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="form-elements">
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-marker-1"></i>
+                                    <input type="text" value="Picking up: City, airport...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-elements">
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-marker-1"></i>
+                                    <input type="text" value="Droping off: City, airport...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-elements">
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-calendar"></i>
+                                    <input type="text" class="awe-calendar" value="Pink off">
+                                </div>
+                            </div>
+
+                            <div class="form-elements">
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-calendar"></i>
+                                    <input type="text" class="awe-calendar" value="Drop off">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group pull-right">
+                            <div class="form-actions">
+                                <input type="submit" value="Find My Car">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <form>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-
-                        <label>Picking Up locations</label>
-                        <div class="input-wrap clearfix">
-                            <input type="text" class="form-control" placeholder="Airport or address">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <label>Picking Up Date</label>
-                        <div class="input-wrap clearfix">
-                            <input type="text" class="form-control pick-date" placeholder="04/03/2015">
-                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <label>Picking Up Time</label>
-                        <div class="input-wrap clearfix">
-                            <input type="text" class="form-control time-pick" placeholder="21:40 am">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <input type="checkbox" name="vehicle2" value="Car" id="car-check">
-                <label class="check" for="car-check"><span class="check-box"></span> Return to the same location </label>
-                <button class="find-car">
-                    <i class="fa fa-binoculars" aria-hidden="true"></i>Find Vehicle
-                </button>
-            </form>
-
         </div>
     </div>
-</div>
+</section>
+<!-- END / SEARCH TABS -->

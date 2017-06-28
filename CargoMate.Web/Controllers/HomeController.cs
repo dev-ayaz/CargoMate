@@ -23,7 +23,12 @@ namespace CargoMate.Web.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Your Login page.";
             return View();
         }
     }
