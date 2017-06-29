@@ -31,5 +31,17 @@ namespace CargoMate.Web.Controllers
             ViewBag.Message = "Your Login page.";
             return View();
         }
+
+        public ActionResult BecomeMember()
+        {
+            ViewBag.Message = "Your Login page.";
+            return View("Register");
+        }
+
+        public ActionResult BecomeDriver()
+        {
+            ViewBag.Message = "Your Login page.";
+            return View("Register");
+        }
     }
 }
