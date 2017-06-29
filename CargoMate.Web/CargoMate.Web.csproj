@@ -2709,6 +2709,7 @@
     <Content Include="Scripts\revslider\font\revicons.ttf" />
     <Content Include="Scripts\revslider\font\revicons.woff" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppLayout\apps\img\" />
