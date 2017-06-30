@@ -85,8 +85,8 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -2596,6 +2596,11 @@
     <Content Include="images\vehicles3.png" />
     <Content Include="images\vehicles4.png" />
     <Content Include="images\vehicles5.png" />
+    <Content Include="images\VehicleTypes\Cargo-Truck.jpg" />
+    <Content Include="images\VehicleTypes\t4.jpg" />
+    <Content Include="images\VehicleTypes\truck1.jpg" />
+    <Content Include="images\VehicleTypes\Truck2.jpg" />
+    <Content Include="images\VehicleTypes\truck3.jpg" />
     <Content Include="images\white-patter-bg.jpg" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app.js" />
