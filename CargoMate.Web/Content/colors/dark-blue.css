@@ -305,7 +305,7 @@ mark, .mark,
 .accordion .ui-state-active,
 .accordion .ui-widget-content .ui-state-active,
 .owl-carousel .owl-controls .owl-buttons > div:hover .fa,
-a {
+a, .clr-theme {
   color: #302E98;
 }
 
