@@ -60,21 +60,13 @@
                @* <span>Welcome back</span>*@
             </div>
 
-                <ul class="nav nav-tabs bg-white" style="border-bottom: 0px">
-                    <li class="active">
-                        <a href="#login-customer" data-toggle="tab" class="brd-t-0">
-                            <i class="fa fa-user"></i> Customer SignIn
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#login-customer" data-toggle="tab" class="brd-t-0">
-                            <i class="fa fa-truck"></i>  Driver SignIn
-                        </a>
-                    </li>
-                </ul>
+
                 <div class="tab-content">
                     <div id="login-customer" class="tab-pane fade in active">
-                        <form class="my-0 brd-t-0">
+                        <div id="socialAuthDiv" class="div-social">
+
+                        </div>
+                        <form class="my-0 brd-t-0 form-actual">
                             <div class="form-item">
                                 <label>Email</label>
                                 <input type="email">
@@ -98,3 +90,22 @@
         </div>
     </div>
 </section>
+
+
+@section Footer{
+    <script src="~/Scripts/FireBase/Configurations.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+
+    <script src="~/Scripts/FireBase/UIConfigurations.js"></script>
+    <script>
+        firebaseUtilFunc.logout();
+        window.firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+               
+            } else {
+                // No user is signed in.
+            }
+        });
+    </script>
+}

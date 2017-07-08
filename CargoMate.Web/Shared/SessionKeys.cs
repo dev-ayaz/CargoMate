@@ -9,6 +9,8 @@ namespace CargoMateSolution.Shared
     {
         public static string AccommodationId = "SessionKeys:AccommodationId";
 
+        public static string CustomerId = "SessionKeys:CustomerId";
+
         public static string UserRolePermissions = "SessionKeys:UserRolePermissions";
 
         public static string UserToken = "SessionKeys:userToken";

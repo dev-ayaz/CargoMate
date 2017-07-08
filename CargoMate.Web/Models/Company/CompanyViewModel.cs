@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using CargoMate.DataAccess.DBContext;
 
-namespace CargoMateSolution.WebApi.Models.Customers
+namespace CargoMateSolution.Models.Company
 {
     public class CompanyViewModel
     {
         public long Id { get; set; }
 
-        public string Name { get; set; }       
+        public string Name { get; set; }
+
+
+
 
         public string Location { get; set; }
 
@@ -27,6 +29,7 @@ namespace CargoMateSolution.WebApi.Models.Customers
 
         public string WebSiteUrl { get; set; }
 
+        [Display(Name = "Country Name")]
         public long CountryId { get; set; }
 
 
@@ -41,6 +44,5 @@ namespace CargoMateSolution.WebApi.Models.Customers
         public string SubLocality { get; set; }
 
         public string Route { get; set; }
-
     }
 }

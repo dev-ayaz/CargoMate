@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+}
+
+<section class="bg-img login-page-demo sign-pg-cvr">
+    <div class="awe-overlay"></div>
+    <div class="container">
+    </div>
+</section>
+
+<section class="container-fluid position-absolute sign-pg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Sign In</h1>
+            </div>
+            <div class="col-xs-12 col-sm-6 py-3">
+                <h5 class="text-muted">Driver</h5>
+                <p>Find everything you need to track your success on the road.</p>
+                <a href="#" class=" btn btn-primary">DRIVER SIGN IN <i class="fa fa-long-arrow-right pull-right"></i></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 py-3">
+                <h5 class="text-muted">Customer</h5>
+                <p>Find everything you need to track your success on the road.</p>
+                <a href="@Url.Action("Login", "Home")" class="btn btn-primary">CUSTOMER SIGN IN <i class="fa fa-long-arrow-right pull-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+

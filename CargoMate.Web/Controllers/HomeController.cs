@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace CargoMate.Web.Controllers
+namespace CargoMateSolution.Controllers
 {
     public class HomeController : Controller
     {
@@ -29,6 +25,12 @@ namespace CargoMate.Web.Controllers
         public ActionResult Login()
         {
             ViewBag.Message = "Your Login page.";
+            return View();
+        }
+
+        public ActionResult SignIn()
+        {
+            ViewBag.Message = "Your Sign page.";
             return View();
         }
 

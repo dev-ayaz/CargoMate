@@ -28,5 +28,8 @@ namespace CargoMateSolution.Models.Customer
         public DateTime? DateOfBirth { get; set; }
 
         public bool? Gender { get; set; }
+
+        [Display(Name = "Company Name")]
+        public long CompanyId { get; set; }
     }
 }

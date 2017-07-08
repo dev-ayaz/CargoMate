@@ -20,35 +20,37 @@ namespace CargoMateSolution.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.Ambiguous, ModelState);
             }
 
-            DbContext.GeoAddresses.Add(new GeoAddress
+            DbContext.Companies.Add(new Company
             {
-                AdministrativeAreaLevel1 = companyForm.GeoAddress.AdministrativeAreaLevel1,
+                AdministrativeAreaLevel1 = companyForm.AdministrativeAreaLevel1,
 
-                AdministrativeAreaLevel2 = companyForm.GeoAddress.AdministrativeAreaLevel2,
+                AdministrativeAreaLevel2 = companyForm.AdministrativeAreaLevel2,
 
-                Country = companyForm.GeoAddress.Country,
+                CountryId = companyForm.CountryId,
 
-                Locality = companyForm.GeoAddress.Locality,
+                Locality = companyForm.Locality,
 
-                SubLocality = companyForm.GeoAddress.SubLocality,
+                SubLocality = companyForm.SubLocality,
 
-                PostalCode = companyForm.GeoAddress.PostalCode,
+                PostalCode = companyForm.PostalCode,
 
-                Route = companyForm.GeoAddress.Route,
+                Route = companyForm.Route,
 
-                Companies = new List<Company>
-                {
-                    new Company
-                    {
-                        Name = companyForm.Name,
-                        Logo = ImageUploader.SaveImageFromBase64(companyForm.Logo),
-                        PhoneNumber = companyForm.PhoneNumber,
-                        CrNumber = companyForm.CrNumber,
-                        Location = companyForm.Location,
-                        PoBox = companyForm.PoBox,
-                        WebSiteUrl = companyForm.WebSiteUrl
-                    }
-                }
+                Name = companyForm.Name,
+
+                Logo = ImageUploader.SaveImageFromBase64(companyForm.Logo),
+
+                PhoneNumber = companyForm.PhoneNumber,
+
+                CrNumber = companyForm.CrNumber,
+
+                Location = companyForm.Location,
+
+                PoBox = companyForm.PoBox,
+
+                WebSiteUrl = companyForm.WebSiteUrl
+                    
+                
 
             });
 
@@ -84,7 +86,7 @@ namespace CargoMateSolution.WebApi.Controllers
 
         public CustomerDisplayViewModel GetCustomerByPhoneNumber(string phoneNumber)
         {
-            return DbContext.Customers.Include("Company").Include("Company.GeoAddress").Where(c => c.PhoneNumber == phoneNumber).Select(c => new CustomerDisplayViewModel
+            return DbContext.Customers.Include("Company").Include("Company").Where(c => c.PhoneNumber == phoneNumber).Select(c => new CustomerDisplayViewModel
             {
                 Customer = new CustomerViewModel
                 {
@@ -107,17 +109,14 @@ namespace CargoMateSolution.WebApi.Controllers
                     PhoneNumber = c.Company.PhoneNumber,
                     PoBox = c.Company.PoBox,
                     WebSiteUrl = c.Company.WebSiteUrl,
-                    GeoAddress = new GeoAddressViewModel
-                    {
-                        Id = c.Company.GeoAddress.Id,
-                        AdministrativeAreaLevel1 = c.Company.GeoAddress.AdministrativeAreaLevel1,
-                        AdministrativeAreaLevel2 = c.Company.GeoAddress.AdministrativeAreaLevel2,
-                        Country = c.Company.GeoAddress.Country,
-                        Locality = c.Company.GeoAddress.Locality,
-                        PostalCode = c.Company.GeoAddress.PostalCode,
-                        Route = c.Company.GeoAddress.Route,
-                        SubLocality = c.Company.GeoAddress.SubLocality
-                    }
+                    AdministrativeAreaLevel1 = c.Company.AdministrativeAreaLevel1,
+                    AdministrativeAreaLevel2 = c.Company.AdministrativeAreaLevel2,
+                    CountryId = c.Company.CountryId.Value,
+                    Locality = c.Company.Locality,
+                    PostalCode = c.Company.PostalCode,
+                    Route = c.Company.Route,
+                    SubLocality = c.Company.SubLocality
+                    
                 }
 
             }).FirstOrDefault();

@@ -46,7 +46,19 @@ namespace CargoMateSolution.WebApi.Models.Driver
 
         public long Status { get; set; }
 
-        public GeoAddress GeoAddress { get; set; }
+
+        [StringLength(50)]
+        public string PostalCode { get; set; }
+
+        public string AdministrativeAreaLevel1 { get; set; }
+
+        public string AdministrativeAreaLevel2 { get; set; }
+
+        public string Locality { get; set; }
+
+        public string SubLocality { get; set; }
+
+        public string Route { get; set; }
 
     }
 }

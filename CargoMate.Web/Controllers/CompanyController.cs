@@ -4,12 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CargoMateSolution.Controllers.Customer
+namespace CargoMateSolution.Controllers
 {
-    public class CustomerController : Controller
+    public class CompanyController : Controller
     {
-        // GET: Customer
+        // GET: Company
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
         {
             return View();
         }

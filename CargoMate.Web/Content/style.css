@@ -3456,7 +3456,7 @@ body.single-post .blog-page__content > .post .post-content {
   font-size: 60px;
   line-height: 1.1em;
 }
-.login-register-page__content form {
+.login-register-page__content .form-actual {
   position: relative;
   overflow: hidden;
   margin-top: 22px;
@@ -3468,7 +3468,7 @@ body.single-post .blog-page__content > .post .post-content {
   border-radius: 5px;
   z-index: 9;
 }
-.login-register-page__content form:after {
+.login-register-page__content .form-actual:after {
   content: '';
   display: block;
   position: absolute;
@@ -3480,20 +3480,20 @@ body.single-post .blog-page__content > .post .post-content {
   opacity: .8;
   z-index: -1;
 }
-.login-register-page__content form .form-item {
+.login-register-page__content .form-actual .form-item {
   margin-bottom: 12px;
 }
-.login-register-page__content form .form-item label {
+.login-register-page__content .form-actual .form-item label {
   display: block;
   font-size: 14px;
   font-weight: 600;
   color: #666;
 }
-.login-register-page__content form .form-item input {
+.login-register-page__content .form-actual .form-item input {
   width: 100%;
 }
-.login-register-page__content form .terms-conditions,
-.login-register-page__content form .forgot-password {
+.login-register-page__content .form-actual .terms-conditions,
+.login-register-page__content .form-actual .forgot-password {
   float: left;
   margin-top: 30px;
   font-size: 12px;
@@ -3502,18 +3502,18 @@ body.single-post .blog-page__content > .post .post-content {
   text-decoration: underline;
   max-width: 160px;
 }
-.login-register-page__content form .terms-conditions:hover,
-.login-register-page__content form .forgot-password:hover {
+.login-register-page__content .form-actual .terms-conditions:hover,
+.login-register-page__content .form-actual .forgot-password:hover {
   color: #0091ea;
 }
-.login-register-page__content form .terms-conditions {
+.login-register-page__content .form-actual .terms-conditions {
   margin-top: 18px;
 }
-.login-register-page__content form .form-actions {
+.login-register-page__content .form-actual .form-actions {
   margin-top: 18px;
   float: right;
 }
-.login-register-page__content form .form-actions input {
+.login-register-page__content .form-actual .form-actions input {
   width: 100%;
   text-align: center;
   font-weight: 600;
@@ -3535,7 +3535,7 @@ body.single-post .blog-page__content > .post .post-content {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.login-register-page__content form .form-actions input:hover {
+.login-register-page__content .form-actual .form-actions input:hover {
   opacity: .7;
 }
 .login-register-page__content .login-register-link {

@@ -34,43 +34,56 @@ namespace CargoMateSolution.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.Ambiguous, ModelState);
             }
 
-            DbContext.GeoAddresses.Add(new GeoAddress
+            DbContext.Drivers.Add(new Driver
             {
-                AdministrativeAreaLevel1 = driverModel.GeoAddress.AdministrativeAreaLevel1,
+                AdministrativeAreaLevel1 = driverModel.AdministrativeAreaLevel1,
 
-                AdministrativeAreaLevel2 = driverModel.GeoAddress.AdministrativeAreaLevel2,
+                AdministrativeAreaLevel2 = driverModel.AdministrativeAreaLevel2,
 
-                Country = driverModel.GeoAddress.Country,
+                Locality = driverModel.Locality,
 
-                Locality = driverModel.GeoAddress.Locality,
+                SubLocality = driverModel.SubLocality,
 
-                SubLocality = driverModel.GeoAddress.SubLocality,
+                PostalCode = driverModel.PostalCode,
 
-                PostalCode = driverModel.GeoAddress.PostalCode,
+                Route = driverModel.Route,
 
-                Route = driverModel.GeoAddress.Route,
-
-                Drivers = new List<Driver>{
-                    new Driver{
                 Name = driverModel.Name,
+
                 CountryId = driverModel.CountryId,
+
                 DateOfBirth = driverModel.DateOfBirth,
+
                 EmailAddress = driverModel.EmailAddress,
+
                 FixedRate = driverModel.FixedRate,
+
                 Gender = driverModel.Gender,
+
                 ImageUrl = ImageUploader.SaveImageFromBase64(driverModel.ImageUrl),
+
                 LegalName = driverModel.LegalName,
+
                 LicenseNumber = driverModel.LicenseNumber,
+
                 LicenseExpiryDate = driverModel.LicenseExpiryDate,
+
                 LicenseImage = driverModel.LicenseImage,
+
                 DriverId = driverModel.DriverId,
+
                 MembershipDate = DateTime.Now.Date,
+
                 PhoneNumber = driverModel.PhoneNumber,
+
                 ResidenceNumber = driverModel.ResidenceNumber,
+
                 ResidenceExpiryDate = driverModel.ResidenceExpiryDate,
+
                 ResidenceImage = ImageUploader.SaveImageFromBase64(driverModel.ResidenceImage),
-                Status = driverModel.Status }
-               }
+
+                Status = driverModel.Status 
+               
             });
 
             return Request.CreateResponse(HttpStatusCode.OK, DbContext.SaveChanges());

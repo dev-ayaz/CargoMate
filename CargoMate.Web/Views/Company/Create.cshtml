@@ -1,0 +1,178 @@
+﻿@model CargoMateSolution.Models.Company.CompanyViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <style>
+        .awe-search-tabs-2 {
+            left: auto;
+        }
+
+        .login-register-page__content .login-register-link {
+            background-color: rgba(255, 246, 246, 0.8);
+            color: #262626;
+        }
+
+        .login-register-page__content {
+            max-width: unset;
+        }
+        .login-page-demo {
+            min-height: 116vh;
+        }
+        .login-register-page__content {
+            padding-bottom: 30px;
+        }
+    </style>
+}
+<section class="bg-img login-page-demo reg-img">
+    <div class="awe-overlay"></div>
+    <div class="container">
+    </div>
+</section>
+
+<section class="awe-parallax login-page-demo login-pg cvr-padding-top col-xs-12">
+    <div class="awe-overlay"></div>
+    <div class="container">
+        <div class="login-register-page__content col-xs-12 col-sm-8">
+
+
+            <div class="tab-content">
+                <div id="register-customer" class="tab-pane fade in active">
+                    @using (Html.BeginForm(new { @class = "" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-xs-12">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                            <h5 class="text-center">Company Registration Form</h5>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.Name)
+
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.CrNumber)
+
+                                    @Html.EditorFor(model => model.CrNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CrNumber, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.PhoneNumber)
+
+                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.Logo)
+
+                                    @Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                    @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.WebSiteUrl)
+
+                                    @Html.EditorFor(model => model.WebSiteUrl, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.WebSiteUrl, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.CountryId)
+
+                                    @Html.DropDownListFor(model => model.CountryId, new SelectList(string.Empty, "Value", "Text"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.PoBox)
+
+                                    @Html.EditorFor(model => model.PoBox, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.PoBox, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+
+
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.PostalCode)
+
+                                    @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.AdministrativeAreaLevel1)
+
+                                    @Html.EditorFor(model => model.AdministrativeAreaLevel1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AdministrativeAreaLevel1, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.AdministrativeAreaLevel2)
+
+                                    @Html.EditorFor(model => model.AdministrativeAreaLevel2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AdministrativeAreaLevel2, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.Locality)
+
+                                    @Html.EditorFor(model => model.Locality, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Locality, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.SubLocality)
+
+                                    @Html.EditorFor(model => model.SubLocality, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SubLocality, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    @Html.LabelFor(model => model.Route)
+
+                                    @Html.EditorFor(model => model.Route, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Route, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item">
+                                    <div class="form-actions">
+                                        <input type="submit" value="Create account">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Footer{
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC88G_-I2GZl8sVDs95qoxcuqBy9_q36nQ"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.placepicker.min.js"></script>
+    <script>
+        var Company = {
+            Selectors: {
+                AddressPicker: "#Name"
+            },
+            Callbacks: {
+                InitAddressPicker: function () {
+                        $(Company.Selectors.AddressPicker).placepicker({
+                            placeChanged: function (place) {
+                                console.log(place);
+                                var latlng = this.getLocation();
+                                var lat = latlng["latitude"];
+                                var long = latlng["longitude"];
+                            }
+                        }).data('placepicker');
+                }
+            }
+        };
+
+        Company.Callbacks.InitAddressPicker();
+    </script>
+}
+

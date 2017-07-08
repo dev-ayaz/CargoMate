@@ -17,7 +17,7 @@ namespace CargoMate.Web
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-               namespaces: new[] { "CargoMate.Web.Controllers" }
+               namespaces: new[] { "CargoMateSolution.Controllers" }
             );
         }
     }
