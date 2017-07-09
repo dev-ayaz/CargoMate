@@ -74,13 +74,22 @@ namespace CargoMate.DataAccess.DBContext
 
         public long? Status { get; set; }
 
-        public long? GeoAddressId { get; set; }
+        [StringLength(50)]
+        public string PostalCode { get; set; }
+
+        public string AdministrativeAreaLevel1 { get; set; }
+
+        public string AdministrativeAreaLevel2 { get; set; }
+
+        public string Locality { get; set; }
+
+        public string SubLocality { get; set; }
+
+        public string Route { get; set; }
 
         public virtual DriverStatus DriverStatus { get; set; }
 
         public virtual Country Country { get; set; }
-
-        public virtual GeoAddress GeoAddress { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VehicleDriverCombination> VehicleDriverCombinations { get; set; }

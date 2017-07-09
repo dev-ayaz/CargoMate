@@ -80,9 +80,9 @@ input[type="file"],select {
   padding: 0 12px;
   color: #666;
   font-size: 14px;
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
+  appearance: none;*/
 }
 
 input[type=number]::-webkit-outer-spin-button,

@@ -19,8 +19,21 @@
         .login-register-page__content {
             max-width: unset;
         }
-        
+
+        .intl-tel-input {
+            position: relative;
+            display: inline !important;
+        }
+
+        .awe-parallax {
+            color:#262626
+        }
+
+        .intl-tel-input .selected-flag {
+            margin-top: 20px;
+        }
     </style>
+    <link href="~/AppLayout/global/plugins/InternationalTelephoneInput/css/intlTelInput.css" rel="stylesheet" />
 }
 <section class="bg-img login-page-demo reg-img">
     <div class="awe-overlay"></div>
@@ -36,7 +49,7 @@
 
             <div class="tab-content">
                 <div id="register-customer" class="tab-pane fade in active">
-                    @using (Ajax.BeginForm("", "",new AjaxOptions(), new { @class = "form-actual" }))
+                    @using (Ajax.BeginForm("", "", new AjaxOptions(), new { @class = "form-actual" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="row">
@@ -67,9 +80,17 @@
                                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-item">
-                                    <label> Part of a Company ?</label>
+                                    @Html.LabelFor(model => model.Address)
 
-                                    @Html.DropDownList("IsCompany", new List<SelectListItem> { new SelectListItem { Text = "No", Value = "false" }, new SelectListItem { Text = "Yes", Value = "true" } }, new { @class = "form-control", id = "IsCompany" })
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-item" id="div-Company" hidden="hidden">
+                                    @Html.LabelFor(model => model.CompanyId)
+
+                                    @Html.DropDownListFor(model => model.CompanyId, new SelectList(string.Empty, "Value", "Text"), "Please Select Your Company", new { @class = "form-control", type = "file" })
+                                    <a href="@Url.Action("Create","Company")">Name Not Exists ! Add Now</a>
+                                    @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
@@ -93,14 +114,12 @@
                                     @Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control", type = "file" } })
                                     @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
                                 </div>
+                                <div class="form-item">
+                                    <label> Part of a Company ?</label>
 
-                                <div class="form-item" id="div-Company" hidden="hidden">
-                                    @Html.LabelFor(model => model.CompanyId)
-
-                                    @Html.DropDownListFor(model => model.CompanyId, new SelectList(string.Empty, "Value", "Text"), "Please Select Your Company", new { @class = "form-control", type = "file" })
-                                    <a href="@Url.Action("Create","Company")">Name Not Exists ! Add Now</a>
-                                    @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+                                    @Html.DropDownList("IsCompany", new List<SelectListItem> { new SelectListItem { Text = "No", Value = "false" }, new SelectListItem { Text = "Yes", Value = "true" } }, new { @class = "form-control", id = "IsCompany" })
                                 </div>
+
                             </div>
                             <div class="col-xs-12">
                                 <div class="col-xs-12 col-sm-6 px-0">
@@ -122,7 +141,17 @@
     </div>
 </section>
 @section Footer {
+
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC88G_-I2GZl8sVDs95qoxcuqBy9_q36nQ"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.placepicker.min.js"></script>
+
+    <script src="~/AppLayout/global/plugins/InternationalTelephoneInput/js/intlTelInput.js"></script>
+
+
+    <script src="~/Scripts/CargoMateClientAppScripts/Customers/Customers.js"></script>
     <script>
         Customers.InitEvents();
     </script>
+
 }

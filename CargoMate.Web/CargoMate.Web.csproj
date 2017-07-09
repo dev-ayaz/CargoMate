@@ -1286,6 +1286,13 @@
     <Content Include="AppLayout\global\plugins\icheck\skins\square\yellow.css" />
     <Content Include="AppLayout\global\plugins\icheck\skins\square\yellow.png" />
     <Content Include="AppLayout\global\plugins\icheck\skins\square\_all.css" />
+    <Content Include="AppLayout\global\plugins\InternationalTelephoneInput\css\demo.css" />
+    <Content Include="AppLayout\global\plugins\InternationalTelephoneInput\css\intlTelInput.css" />
+    <Content Include="AppLayout\global\plugins\InternationalTelephoneInput\img\flags%402x.png" />
+    <Content Include="AppLayout\global\plugins\InternationalTelephoneInput\img\flags.png" />
+    <Content Include="AppLayout\global\plugins\InternationalTelephoneInput\js\intlTelInput.js" />
+    <Content Include="AppLayout\global\plugins\InternationalTelephoneInput\js\intlTelInput.min.js" />
+    <Content Include="AppLayout\global\plugins\InternationalTelephoneInput\js\utils.js" />
     <Content Include="AppLayout\global\plugins\jquery-file-upload\blueimp-gallery\blueimp-gallery.min.css" />
     <Content Include="AppLayout\global\plugins\jquery-file-upload\blueimp-gallery\jquery.blueimp-gallery.min.js" />
     <Content Include="AppLayout\global\plugins\jquery-file-upload\cors\postmessage.html" />

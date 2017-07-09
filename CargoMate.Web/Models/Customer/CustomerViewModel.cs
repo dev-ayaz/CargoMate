@@ -31,5 +31,7 @@ namespace CargoMateSolution.Models.Customer
 
         [Display(Name = "Company Name")]
         public long CompanyId { get; set; }
+
+        public string Address { get; set; }
     }
 }

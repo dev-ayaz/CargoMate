@@ -157,11 +157,6 @@ namespace CargoMate.DataAccess.DBContext
                 .WithOptional(e => e.CustomerStatus)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<GeoAddress>()
-                .HasMany(e => e.Companies)
-                .WithOptional(e => e.GeoAddress)
-                .HasForeignKey(e => e.AddressId);
-
             modelBuilder.Entity<Driver>()
                 .HasMany(e => e.VehicleDriverCombinations)
                 .WithOptional(e => e.Driver)

@@ -36,9 +36,20 @@ namespace CargoMate.DataAccess.DBContext
         [StringLength(250)]
         public string WebSiteUrl { get; set; }
 
-        public long? AddressId { get; set; }
+        public long? CountryId { get; set; }
 
-        public virtual GeoAddress GeoAddress { get; set; }
+        [StringLength(50)]
+        public string PostalCode { get; set; }
+
+        public string AdministrativeAreaLevel1 { get; set; }
+
+        public string AdministrativeAreaLevel2 { get; set; }
+
+        public string Locality { get; set; }
+
+        public string SubLocality { get; set; }
+
+        public string Route { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

@@ -9,13 +9,6 @@ namespace CargoMate.DataAccess.DBContext
     [Table("Geo.GeoAddress")]
     public partial class GeoAddress
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GeoAddress()
-        {
-            Companies = new HashSet<Company>();
-            Drivers = new HashSet<Driver>();
-        }
-
         public long Id { get; set; }
 
         [StringLength(50)]
@@ -33,11 +26,5 @@ namespace CargoMate.DataAccess.DBContext
         public string SubLocality { get; set; }
 
         public string Route { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company> Companies { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Driver> Drivers { get; set; }
     }
 }
