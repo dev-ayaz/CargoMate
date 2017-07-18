@@ -19,14 +19,29 @@
         .login-register-page__content {
             max-width: unset;
         }
+
         .login-page-demo {
             min-height: 116vh;
         }
+
         .login-register-page__content {
             padding-bottom: 30px;
         }
-    </style>
 
+        .intl-tel-input {
+            position: relative;
+            display: inline !important;
+        }
+
+        .awe-parallax {
+            color: #262626;
+        }
+
+        .intl-tel-input .selected-flag {
+            margin-top: 20px;
+        }
+    </style>
+    <link href="~/AppLayout/global/plugins/InternationalTelephoneInput/css/intlTelInput.css" rel="stylesheet" />
 }
 <section class="bg-img login-page-demo reg-img">
     <div class="awe-overlay"></div>
@@ -42,12 +57,12 @@
 
             <div class="tab-content">
                 <div id="register-customer" class="tab-pane fade in active">
-                    @using (Ajax.BeginForm("", "", new AjaxOptions(), new { @class = "form-actual" }))
+                    @using (Ajax.BeginForm("Create", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Company.Callbacks.InsertSuccess" }, new { enctype = "multipart/form-data", @class = "form-actual", id = "CompanyForm" }))
                     {
-                        @Html.AntiForgeryToken()
+ 
                         <div class="row">
                             <div class="col-xs-12">
-                                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             </div>
                             <h5 class="text-center">Company Registration Form</h5>
 
@@ -55,22 +70,22 @@
                                 <div class="form-item">
                                     @Html.LabelFor(model => model.Name)
 
-                                    @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
-                                    @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-item">
                                     @Html.LabelFor(model => model.CrNumber)
 
-                                    @Html.EditorFor(model => model.CrNumber, new {htmlAttributes = new {@class = "form-control"}})
-                                    @Html.ValidationMessageFor(model => model.CrNumber, "", new {@class = "text-danger"})
+                                    @Html.EditorFor(model => model.CrNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CrNumber, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-item">
                                     @Html.LabelFor(model => model.PhoneNumber)
 
-                                    @Html.EditorFor(model => model.PhoneNumber, new {htmlAttributes = new {@class = "form-control"}})
-                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new {@class = "text-danger"})
+                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
 
 
@@ -79,22 +94,25 @@
                                 <div class="form-item">
                                     @Html.LabelFor(model => model.Logo)
 
-                                    @Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                    @Html.Editor("CompanyLogo", new { htmlAttributes = new { @class = "form-control", type = "file" } })
                                     @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Logo)
                                 </div>
                                 <div class="form-item">
                                     @Html.LabelFor(model => model.WebSiteUrl)
 
-                                    @Html.EditorFor(model => model.WebSiteUrl, new {htmlAttributes = new {@class = "form-control"}})
-                                    @Html.ValidationMessageFor(model => model.WebSiteUrl, "", new {@class = "text-danger"})
+                                    @Html.EditorFor(model => model.WebSiteUrl, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.WebSiteUrl, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-item">
                                     @Html.LabelFor(model => model.Address)
 
-                                    @Html.EditorFor(model => model.Address, new {htmlAttributes = new {@class = "form-control"}})
-                                    @Html.ValidationMessageFor(model => model.Address, "", new {@class = "text-danger"})
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                 </div>
+                                @Html.HiddenFor(model => model.CountryName)
+                                @Html.HiddenFor(model => model.Location)
                             </div>
 
                         </div>
@@ -117,42 +135,23 @@
     </div>
 </section>
 @section Footer{
-<script>
-    function myMap() {
-        var mapProp = {
-            center: new google.maps.LatLng(51.508742, -0.120850),
-            zoom: 5
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    }
-</script>
 
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC88G_-I2GZl8sVDs95qoxcuqBy9_q36nQ&force=lite&callback=myMap"></script>
-  @* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjMDQMFVFGXTV57FDNJz5p6EoYEKY9Wc&force=lite&callback=myMap"></script>*@
+    <script src="~/Scripts/CargoMateClientAppScripts/Company/MapSetup.js"></script>
+    <script src="~/Scripts/CargoMateClientAppScripts/Company/Company.js"></script>
+
+    <script src="~/AppLayout/global/plugins/InternationalTelephoneInput/js/intlTelInput.js"></script>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC88G_-I2GZl8sVDs95qoxcuqBy9_q36nQ&force=lite&callback=CompanyMap.initEvents"></script>
+   
      <script type="text/javascript" src="~/Scripts/jquery.placepicker.min.js"></script>
-    <script>
-        var Company = {
-            Selectors: {
-                AddressPicker: "#Address"
-            },
-            Callbacks: {
-                InitAddressPicker: function() {
-                    $(Company.Selectors.AddressPicker).placepicker({
-                        placeChanged: function(place) {
-                            console.log(place);
-                            var latlng = this.getLocation();
-                            var lat = latlng["latitude"];
-                            var long = latlng["longitude"];
-                        }
-                    }).data('placepicker');
-                }
-            }
-        };
 
-        Company.Callbacks.InitAddressPicker();
+    <script>
+        
+        Company.initEvents();
+
     </script>
 
-    
+
 
 }
 

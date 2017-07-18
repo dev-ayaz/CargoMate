@@ -22,19 +22,10 @@ namespace CargoMateSolution.WebApi.Controllers
 
             DbContext.Companies.Add(new Company
             {
-                AdministrativeAreaLevel1 = companyForm.AdministrativeAreaLevel1,
 
-                AdministrativeAreaLevel2 = companyForm.AdministrativeAreaLevel2,
+                Address = companyForm.Address,
 
                 CountryId = companyForm.CountryId,
-
-                Locality = companyForm.Locality,
-
-                SubLocality = companyForm.SubLocality,
-
-                PostalCode = companyForm.PostalCode,
-
-                Route = companyForm.Route,
 
                 Name = companyForm.Name,
 
@@ -46,7 +37,6 @@ namespace CargoMateSolution.WebApi.Controllers
 
                 Location = companyForm.Location,
 
-                PoBox = companyForm.PoBox,
 
                 WebSiteUrl = companyForm.WebSiteUrl
                     
@@ -107,15 +97,9 @@ namespace CargoMateSolution.WebApi.Controllers
                     Logo = c.Company.Logo,
                     Name = c.Company.Name,
                     PhoneNumber = c.Company.PhoneNumber,
-                    PoBox = c.Company.PoBox,
                     WebSiteUrl = c.Company.WebSiteUrl,
-                    AdministrativeAreaLevel1 = c.Company.AdministrativeAreaLevel1,
-                    AdministrativeAreaLevel2 = c.Company.AdministrativeAreaLevel2,
                     CountryId = c.Company.CountryId.Value,
-                    Locality = c.Company.Locality,
-                    PostalCode = c.Company.PostalCode,
-                    Route = c.Company.Route,
-                    SubLocality = c.Company.SubLocality
+                    Address = c.Company.Address
                     
                 }
 

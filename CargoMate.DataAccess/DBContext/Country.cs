@@ -13,6 +13,7 @@ namespace CargoMate.DataAccess.DBContext
         public Country()
         {
             Makes = new HashSet<Make>();
+            Companies = new HashSet<Company>();
             Drivers = new HashSet<Driver>();
             LocalizedCountries = new HashSet<LocalizedCountry>();
             Vehicles = new HashSet<Vehicle>();
@@ -32,6 +33,9 @@ namespace CargoMate.DataAccess.DBContext
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Make> Makes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Company> Companies { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Driver> Drivers { get; set; }

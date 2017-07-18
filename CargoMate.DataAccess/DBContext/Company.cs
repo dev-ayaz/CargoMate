@@ -28,9 +28,6 @@ namespace CargoMate.DataAccess.DBContext
 
         public long? CrNumber { get; set; }
 
-        [StringLength(500)]
-        public string PoBox { get; set; }
-
         public string Logo { get; set; }
 
         [StringLength(250)]
@@ -38,18 +35,9 @@ namespace CargoMate.DataAccess.DBContext
 
         public long? CountryId { get; set; }
 
-        [StringLength(50)]
-        public string PostalCode { get; set; }
+        public string Address { get; set; }
 
-        public string AdministrativeAreaLevel1 { get; set; }
-
-        public string AdministrativeAreaLevel2 { get; set; }
-
-        public string Locality { get; set; }
-
-        public string SubLocality { get; set; }
-
-        public string Route { get; set; }
+        public virtual Country Country { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

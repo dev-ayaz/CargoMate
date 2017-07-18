@@ -31,6 +31,11 @@ namespace CargoMate.DataAccess.DBContext
 
         public bool? Gender { get; set; }
 
+        public string Address { get; set; }
+
+        [StringLength(200)]
+        public string Location { get; set; }
+
         public decimal? Rating { get; set; }
 
         public long? CompanyId { get; set; }

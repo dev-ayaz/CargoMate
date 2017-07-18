@@ -20,7 +20,6 @@ namespace CargoMateSolution.WebApi.Models.Customers
 
         public long CrNumber { get; set; }
 
-        public string PoBox { get; set; }
 
         public string Logo { get; set; }
 
@@ -30,17 +29,9 @@ namespace CargoMateSolution.WebApi.Models.Customers
         public long CountryId { get; set; }
 
 
-        public string PostalCode { get; set; }
+        public string Address { get; set; }
 
-        public string AdministrativeAreaLevel1 { get; set; }
 
-        public string AdministrativeAreaLevel2 { get; set; }
-
-        public string Locality { get; set; }
-
-        public string SubLocality { get; set; }
-
-        public string Route { get; set; }
 
     }
 }

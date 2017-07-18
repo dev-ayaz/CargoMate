@@ -11,6 +11,7 @@
     tosUrl: '#',
     'callbacks': {
         'signInSuccess': function (currentUser, credential, redirectUrl) {
+
             Customers.CallBacks.IsCustomerExists(currentUser);
             return false;
         }

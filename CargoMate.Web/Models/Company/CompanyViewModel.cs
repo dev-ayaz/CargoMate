@@ -10,12 +10,15 @@ namespace CargoMateSolution.Models.Company
     {
         public long Id { get; set; }
 
+        [Required(ErrorMessage = "Please Enter Name")]
         public string Name { get; set; }
 
         public string Location { get; set; }
 
+        [Required(ErrorMessage = "Please Enter Phone Number")]
         public string PhoneNumber { get; set; }
 
+        [Required(ErrorMessage = "Please Enter CR Number")]
         public long CrNumber { get; set; }
 
         public string Logo { get; set; }
@@ -23,6 +26,6 @@ namespace CargoMateSolution.Models.Company
 
         public string Address { get; set; }
 
-
+        public string CountryName { get; set; }
     }
 }

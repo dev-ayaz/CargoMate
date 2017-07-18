@@ -152,6 +152,10 @@ namespace CargoMate.DataAccess.DBContext
                 .Property(e => e.Location)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.Location)
+                .IsUnicode(false);
+
             modelBuilder.Entity<CustomerStatus>()
                 .HasMany(e => e.LocalizedCustomerStatuses)
                 .WithOptional(e => e.CustomerStatus)
