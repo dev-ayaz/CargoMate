@@ -2199,6 +2199,7 @@
     <Content Include="Content\responsive.css" />
     <Content Include="Content\settings.css" />
     <Content Include="Content\simple-line-icons.css" />
+    <Content Include="Content\social-auth-buttons.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -2620,6 +2621,7 @@
     <Content Include="Scripts\CargoMateClientAppScripts\Company\Company.js" />
     <Content Include="Scripts\CargoMateClientAppScripts\Company\MapSetup.js" />
     <Content Include="Scripts\CargoMateClientAppScripts\Customers\Customers.js" />
+    <Content Include="Scripts\CargoMateClientAppScripts\Customers\Register.js" />
     <Content Include="Scripts\CargoMateUtilities\ajax-interceptor.js" />
     <Content Include="Scripts\CargoMateUtilities\CargoMateAlerts.js" />
     <Content Include="Scripts\CargoMateUtilities\link-activator.js" />

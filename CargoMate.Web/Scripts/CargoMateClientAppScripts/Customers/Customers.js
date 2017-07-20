@@ -10,7 +10,8 @@
         UserImage: "#ImageUrl",
         CustomerId: "#CustomerId",
         Name: "#Name",
-        EmailAddress: "#EmailAddress"
+        EmailAddress: "#EmailAddress",
+        
     },
     Services: {
 
@@ -29,7 +30,7 @@
             RequestHandler.postToController(url, RequestHandler.formMethods.Get, { userId: user.uid }, function (response) {
 
                 if (!response.IsExists) {
-                   
+
                     window.location.href = response.RedirectUrl;
                 } else {
                     window.location.href = RequestHandler.getSiteBase();
@@ -45,10 +46,10 @@
         }
     },
     InitEvents: function () {
- 
-       
+
+
         var user = JSON.parse(sessionStorage.getItem("User"));
-      
+
         if (user != null) {
             if (user.displayName) {
                 $(Customers.Selectors.Name).val(user.displayName);
@@ -63,9 +64,9 @@
                 $(Customers.Selectors.Phone).val(user.phoneNumber);
                 $(Customers.Selectors.Phone).attr("disabled", "disabled");
             }
-           
+
         }
-       
+
 
         $(Customers.Selectors.CustomerId).val(RequestHandler.getQueryString("UId"));
 
@@ -111,18 +112,18 @@
             dropdownContainer: "",
             excludeCountries: [],
             formatOnDisplay: true,
-            geoIpLookup: function(callback) {
-                   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-                     var countryCode = (resp && resp.country) ? resp.country : "";
-                     callback(countryCode);
-                   });
-                 },
+            geoIpLookup: function (callback) {
+                $.get("http://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
 
             initialCountry: "",
             nationalMode: false,
             placeholderNumberType: "MOBILE",
             onlyCountries: [],
-            preferredCountries: ["sa", "ae","pk"],
+            preferredCountries: ["sa", "ae", "pk"],
             separateDialCode: false,
             utilsScript: ""
         });

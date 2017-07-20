@@ -19,10 +19,12 @@ namespace CargoMateSolution.Models.Customer
 
         [Required(ErrorMessage = "Please Enter Email Address")]
         [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
         public string EmailAddress { get; set; }
 
         [StringLength(20)]
         [Required(ErrorMessage = "Please Enter Phone Number")]
+        [Display(Name = "Phone")]
         public string PhoneNumber { get; set; }
 
         public string ImageUrl { get; set; }
@@ -37,5 +39,27 @@ namespace CargoMateSolution.Models.Customer
         public string Address { get; set; }
 
         public string Location { get; set; }
+    }
+
+    public class RegisterVithEmailAndPassword
+    {
+
+        [Required(ErrorMessage = "Please Enter Email Address")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string EmailAddress { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Password")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Confirm Password")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+            [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+    
+
     }
 }

@@ -87,11 +87,13 @@ body #header {
 .login a:hover {
     color: #3f2c25;
 }
+
 @media(min-width: 768px) {
     .logo img {
-         height: 116px;
+        height: 116px;
     }
 }
+
 .logo img {
     display: block;
     margin: auto;
@@ -220,35 +222,34 @@ body #header {
     .header-info .social-det .login a {
         display: inline-block;
         margin: 0px 10px;
-        
     }
 
-    @media (max-width: 768px) {
-        .header-info .social-det .login a {
-            margin: 0 5px;
-            font-size: 13px;
-        } 
+@media (max-width: 768px) {
+    .header-info .social-det .login a {
+        margin: 0 5px;
+        font-size: 13px;
     }
+}
 
-        .header-info .social-det .login a:not(.btn):hover {
-            text-decoration: underline;
-        }
+.header-info .social-det .login a:not(.btn):hover {
+    text-decoration: underline;
+}
 
-        .header-info .social-det .login a:not(.btn) {
-            color: rgba(27, 25, 25, 0.7);
-        }
+.header-info .social-det .login a:not(.btn) {
+    color: rgba(27, 25, 25, 0.7);
+}
 
-        /*.header-info .social-det .login a span {
+/*.header-info .social-det .login a span {
             font-size: 13px;
             font-family: 'Open Sans';
             margin-right: 9px;
             vertical-align: top;
         }*/
 
-        
-        .header-info .social-det .login a i {
-            margin-left: 5px;
-        }
+
+.header-info .social-det .login a i {
+    margin-left: 5px;
+}
 
 nav {
     float: left;
@@ -510,22 +511,25 @@ input[type="text"].search-bar {
     background-color: rgba(0, 0, 0, 0.9);
     padding: 0px 15px !important;
 }
+
 .awe-search-tabs-2 .awe-search-tabs__content {
-     background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
 }
+
 .awe-parallax {
-        /*background-image: url(../images/01.png);
+    /*background-image: url(../images/01.png);
     background-repeat: no-repeat;
     background-size: cover;*/
 }
+
 .main-search .ui-tabs-nav li .ui-tabs-anchor {
     display: block;
     background-color: transparent !important;
     width: 100%;
     text-align: left;
-        border-bottom-width: 2px;
+    border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color:#252525 !important;
+    border-bottom-color: #252525 !important;
     color: #fefefe !important;
     font-size: 1.6em !important;
     padding: 10px !important;
@@ -535,8 +539,7 @@ input[type="text"].search-bar {
 @media(max-width:768px) {
     .login-page-demo {
         min-height: 205vh !important;
-    } 
-
+    }
 }
 
 .position-absolute {
@@ -551,50 +554,102 @@ input[type="text"].search-bar {
     background-color: #FFF;
     padding: 4em 10em;
 }
+
 .sign-pg p {
     max-width: 75%;
 }
+
 @media(max-width:768px) {
     .sign-pg p {
         max-width: 100%;
     }
+
     .sign-pg .container {
         padding: 20px;
     }
+
     .sign-pg-cvr {
         min-height: 110vh !important;
     }
 }
+
 .sign-pg .btn {
     width: 190px;
     text-align: left;
 }
+
 .py-3 {
     padding-top: 3em;
     padding-bottom: 3em;
 }
-    .sign-pg .btn i {
-        margin-top: 3px;
-        margin-right: 8px;
-        -moz-transition:all 0.3s ease ;
-        -o-transition: all 0.3s ease ;
-        -webkit-transition: all 0.3s ease ;
-        transition: all 0.3s ease ;
-    }
 
-    .sign-pg .btn:hover i {
-        margin-right: 0px;
-    }
+.sign-pg .btn i {
+    margin-top: 3px;
+    margin-right: 8px;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
 
-    .div-social {
-        background-color: rgba(255, 255, 255, 0.55);
-        border-bottom: 1px solid #dbdbdb;
+.sign-pg .btn:hover i {
+    margin-right: 0px;
+}
+
+.div-social {
+    background-color: rgba(255, 255, 255, 0.55);
+    border-bottom: 1px solid #dbdbdb;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+    .div-social .firebaseui-container {
+        padding: 1.5em 0px;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     }
 
-    .div-social .firebaseui-container {
-        padding: 1.5em 0px;
-            border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    .login-register-page__content {
+        float: none;
+    }
+    .login-register-page__content .form-actual:after {
+        opacity: 1;
+    }
+
+    .mb-2 {
+        margin-bottom: 20px;
+    }
+    .d-block {
+        display: block;
+    }
+    .d-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .d-inline-block {
+        display: inline-block;
+    }
+    .form-item {
+        width: 100%;
+    }
+    .form-item > label {
+        margin-top: 5px;
+    }
+    .seperator-line {
+        width: 1px;
+        margin: auto;
+        text-align: center;
+        height: 100%;
+        border-left: 1px dotted #dadada;
+    }
+    .or-reg-img {
+        position: absolute;
+        top: 40px;
+        left: calc(50% - 17px);
+        right: auto;
+        width: 35px;
+        height: 35px;
+    }
+    .page-title {
+        margin-bottom: 40px;
     }
