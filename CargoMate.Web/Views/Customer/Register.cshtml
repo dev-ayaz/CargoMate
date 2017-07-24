@@ -117,11 +117,11 @@
 
                                     <div class="col-xs-12 px-0">
                                         <div class="form-actions">
-                                            <a class="loginBtn loginBtn--facebook" href="javascript:" role="button" id="signUpWithFacebook">
+                                            <a class="loginBtn loginBtn--facebook d-inline-block" href="javascript:" role="button" id="signUpWithFacebook">
                                                 Register with Facebook
                                             </a>
 
-                                            <a class="loginBtn loginBtn--google" role="button" id="signUpWithGoogle">
+                                            <a class="loginBtn loginBtn--google d-inline-block" role="button" id="signUpWithGoogle">
                                                 Register with Google
                                             </a>
                                         </div>
@@ -151,15 +151,15 @@
 
     <script>
         CustomerRegistration.initevents();
-        $(function () {
-            var user = window.firebase.auth().currentUser;
+        //$(function () {
+        //    var user = window.firebase.auth().currentUser;
 
-            if (user) {
-                console.log(user);
-            } else {
-                // No user is signed in.
-            }
-        });
+        //    if (user) {
+        //        console.log(user);
+        //    } else {
+        //        // No user is signed in.
+        //    }
+        //});
 
 
     </script>

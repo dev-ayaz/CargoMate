@@ -8,12 +8,32 @@
         Password: "#Password"
     },
     services: {
-        controller: "",
+        controller: "Customer",
         actions: {
-
+            Register: "Register"
         }
     },
     callbacks: {
+        registerCustomer: function (user) {
+  
+            var url = [RequestHandler.getSiteBase(), "/", CustomerRegistration.services.controller, "/", CustomerRegistration.services.actions.Register].join("");
+
+            var userModel = { CustomerId: user.uid, Name: user.displayName || "", EmailAddress: user.email, PhoneNumber : user.phoneNumber || "000" };
+
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                traditional: true,
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(userModel),
+                success: function(data) {
+                    CargoMateAlerts.actionAlert(data.MessageHeader, data.Message, data.IsError);
+                },
+                error: function (data) { console.log(data) }
+            });
+           
+        }
 
     },
     initevents: function () {
@@ -22,12 +42,12 @@
             console.log(user);
         });
         $(CustomerRegistration.selectors.signUpWithGoogleButton + ":not(.bound)").addClass("bound").click(function () {
-            firebaseUtilFunc.signInwithGoogle().then(function (result) {
-                debugger;
-                if (result.IsError) {
-                    CargoMateAlerts.actionAlert("Error", result.result, true);
+            firebaseUtilFunc.signInwithGoogle().then(function (response) {
+                if (response.IsError) {
+                    CargoMateAlerts.actionAlert("Error", response.result, true);
+                } else {
+                    CustomerRegistration.callbacks.registerCustomer(response.result);
                 }
-                console.log(result);
             });
         });
         $(CustomerRegistration.selectors.CustomerRegistrationForm).submit(function (e) {
@@ -37,7 +57,9 @@
                 if (response.IsError) {
                     CargoMateAlerts.actionAlert("Error", response.result, true);
                 }
-                console.log(response.result);
+                else {
+                    CustomerRegistration.callbacks.registerCustomer(response.result);
+                }
             });
             return false;
         });

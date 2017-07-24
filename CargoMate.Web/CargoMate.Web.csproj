@@ -2739,6 +2739,7 @@
     <Content Include="Views\Customer\Register.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
     <Content Include="Views\Home\SignIn.cshtml" />
+    <Content Include="Views\Customer\UpdateCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppLayout\apps\img\" />

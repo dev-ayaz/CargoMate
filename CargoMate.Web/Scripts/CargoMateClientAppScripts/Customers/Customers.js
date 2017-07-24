@@ -10,7 +10,7 @@
         UserImage: "#ImageUrl",
         CustomerId: "#CustomerId",
         Name: "#Name",
-        EmailAddress: "#EmailAddress",
+        EmailAddress: "#EmailAddress"
         
     },
     Services: {

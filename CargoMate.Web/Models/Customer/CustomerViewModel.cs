@@ -29,7 +29,7 @@ namespace CargoMateSolution.Models.Customer
 
         public string ImageUrl { get; set; }
 
-        public DateTime? DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         public bool? Gender { get; set; }
 
